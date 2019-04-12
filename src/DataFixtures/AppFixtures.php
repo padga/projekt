@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * App fixtures.
+ */
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
