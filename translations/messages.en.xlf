@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="title.login">
+                <source>title.login</source>
+                <target>Log in</target>
+            </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="action.login">
+                <source>action.login</source>
+                <target>Log in</target>
+            </trans-unit>
+            <trans-unit id="action.register">
+                <source>action.register</source>
+                <target>Sign up</target>
+            </trans-unit>
+            <trans-unit id="title.register">
+                <source>title.register</source>
+                <target>Sign up</target>
+            </trans-unit>
+            <trans-unit id="label.repeat.password">
+                <source>label.repeat.password</source>
+                <target>Repeat password</target>
+            </trans-unit>
+            <trans-unit id="label.first_name">
+                <source>label.first_name</source>
+                <target>First name</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
