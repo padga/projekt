@@ -6,7 +6,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
@@ -61,35 +60,9 @@ class User implements UserInterface
     private $id;
 
     /**
-     * Created at.
-     *
-     * @var \DateTime
-     *
-     * @Gedmo\Timestampable(on="create")
-     *
-     * @ORM\Column(type="datetime")
-     *
-     * @Assert\DateTime
-     */
-    private $createdAt;
-
-    /**
-     * Updated at.
-     *
-     * @var \DateTime
-     *
-     * @Gedmo\Timestampable(on="update")
-     *
-     * @ORM\Column(type="datetime")
-     *
-     * @Assert\DateTime
-     */
-    private $updatedAt;
-
-    /**
      * E-mail.
      *
-     * @var string $email
+     * @var string
      *
      * @ORM\Column(
      *     type="string",
@@ -146,45 +119,6 @@ class User implements UserInterface
         return $this->id;
     }
 
-    /**
-     * Getter for the Created At.
-     *
-     * @return \DateTimeInterface|null Created At
-     */
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Setter for the Created At.
-     *
-     * @param \DateTimeInterface $createdAt Created At
-     */
-    public function setCreatedAt(\DateTimeInterface $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * Getter for the Updated At.
-     *
-     * @return \DateTimeInterface|null updated at
-     */
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Setter for the Updated At.
-     *
-     * @param \DateTimeInterface $updatedAt Updated at
-     */
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
-    }
 
     /**
      * Getter for the E-mail.
@@ -243,7 +177,7 @@ class User implements UserInterface
      *
      * @return array Roles
      */
-    public function getRoles() : array
+    public function getRoles(): array
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
@@ -298,4 +232,5 @@ class User implements UserInterface
     {
         $this->firstName = $firstName;
     }
+
 }

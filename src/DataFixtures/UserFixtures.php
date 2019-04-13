@@ -40,8 +40,6 @@ class UserFixtures extends AbstractBaseFixtures
     {
         $this->createMany(10, 'users', function ($i) {
             $user = new User();
-            $user->setCreatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
-            $user->setUpdatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
             $user->setEmail(sprintf('user%d@example.com', $i));
             $user->setFirstName($this->faker->firstName);
             $user->setRoles(['ROLE_USER']);
@@ -55,8 +53,6 @@ class UserFixtures extends AbstractBaseFixtures
 
         $this->createMany(3, 'admins', function ($i) {
             $user = new User();
-            $user->setCreatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
-            $user->setUpdatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
             $user->setEmail(sprintf('admin%d@example.com', $i));
             $user->setFirstName($this->faker->firstName);
             $user->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
