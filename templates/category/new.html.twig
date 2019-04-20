@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+    <h1> {{ 'title.category_new'|trans }} </h1>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.category_new',
         attr: {
@@ -12,17 +13,5 @@
             action: url('category_new')
         },
     } %}
-    <a href="{{ url('category_new')}}" title="{{ 'action.add_category'|trans }}"> {{ 'action.add_category'|trans }}</a>
-    {#<h1>{{ 'title.category_new'|trans }}</h1>#}
-    {#{{ form_start(form, { method: 'post', action: url('category_new') }) }}#}
-    {#{{ form_widget(form) }}#}
-    {#<div class="form-group row float-sm-right">#}
-    {#<input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />#}
-    {#</div>#}
-    {#<div class="form-group row float-sm-left">#}
-    {#<a href="{{ url('category_index') }}" class="btn btn-link">#}
-    {#{{ 'action.back_to_list'|trans }}#}
-    {#</a>#}
-    {#</div>#}
-    {#{{ form_end(form) }}#}
+
 {% endblock %}
