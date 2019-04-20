@@ -12,7 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Class UserController.
@@ -50,26 +49,20 @@ class UserController extends AbstractController
      *     name="auth_register",
      * )
      */
-    public function new(Request $request, UserRepository $repository, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function new(Request $request, UserRepository $repository): Response
     {
-        $this->passwordEncoder = $passwordEncoder;
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $form['password'];
-            $user->setPassword($passwordEncoder->encodePassword(
-                $user,
-                $password
-            ));
-            $user->setRoles(['ROLE_USER']);
-
+//            $category->setCreatedAt(new \DateTime());
+//            $category->setUpdatedAt(new \DateTime());
             $repository->save($user);
 
             $this->addFlash('success', 'message.created_successfully');
 
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('/');
         }
 
         return $this->render(

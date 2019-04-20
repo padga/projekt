@@ -1,3 +1,28 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}#}
+    {#{{ 'title.register'|trans }}#}
+{#{% endblock %}#}
+
+{#{% block body %}#}
+    {#<h1>{{ 'title.register'|trans }}</h1>#}
+
+    {#<div class="form-container">#}
+    {#{% include 'default/_form.html.twig' with {#}
+        {#page_title: 'title.register',#}
+        {#attr: {#}
+            {#method: 'post',#}
+            {#action: url('auth_register')#}
+        {#},#}
+        {#back_to_list_path: '/',#}
+    {#} %}#}
+    {#<div class="form-group row float-sm-right">#}
+        {#<input type="submit" value="{{ submit_label|default('action.register'|trans) }}" class="btn btn-primary" />#}
+    {#</div>#}
+    {#</div>#}
+
+
+{#{% endblock %}#}
 {% extends 'base.html.twig' %}
 
 {% block title %}
@@ -6,17 +31,21 @@
 
 {% block body %}
 
+    <h1>
+        {{ 'title.register'|trans }}
+    </h1>
+
     <div class="form-container">
     {% include 'default/_form.html.twig' with {
-        page_title: 'title.register',
-        attr: {
-            method: 'post',
-            action: url('auth_register')
-        },
-        back_to_list_path: '/',
+    page_title: 'title.register',
+    attr: {
+    method: 'post',
+    action: url('auth_register')
+    },
+    back_to_list_path: '/',
     } %}
     <div class="form-group row float-sm-right">
-        <input type="submit" value="{{ submit_label|default('action.register'|trans) }}" class="btn btn-primary" />
+    <input type="submit" value="{{ submit_label|default('action.register'|trans) }}" class="btn btn-primary" />
     </div>
     </div>
 

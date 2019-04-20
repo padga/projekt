@@ -17,14 +17,14 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-#        main:
-#            anonymous: true
+        main:
+            anonymous: true
 
-#            guard:
-#                authenticators:
-#                    - App\Security\LoginFormAuthenticator
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
-                # redirect anonymous users to the login page
+#                 redirect anonymous users to the login page
 #                entry_point: App\Security\LoginFormAuthenticator
 
             logout:

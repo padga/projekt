@@ -9,7 +9,7 @@
     <h1>
         {{ 'title.login'|trans }}
     </h1>
-
+    <div class="form-container">
     <form method="post" action="{{ url('security_login') }}">
         {% if error %}
             {%  include 'default/_single_flash_message.html.twig' with {
@@ -38,4 +38,5 @@
         </div>
     </form>
     <a href="{{ url('auth_register')}}" title="{{ 'action.register'|trans }}"> {{ 'action.register'|trans }}</a>
+    </div>
 {% endblock %}
