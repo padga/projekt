@@ -38,6 +38,15 @@
                 <source>label.first_name</source>
                 <target>Imię</target>
             </trans-unit>
+            <trans-unit id="title.category_new">
+                <source>title.category_new</source>
+                <target>Dodaj karegorię</target>
+            </trans-unit>
+            <trans-unit id="label.category_name">
+            <source>label.category_name</source>
+            <target>Nazwa kategorii</target>
+            </trans-unit>
+
 
         </body>
     </file>

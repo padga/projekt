@@ -5,44 +5,40 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
             <link rel="stylesheet" href="{{ asset("css/foundation.css")}}"/>
             <link rel="stylesheet" href="{{ asset("css/app.css")}}"/>
-
-
-
+            <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
         {% endblock %}
     </head>
 {% endblock %}
-
 <body>
 <nav class="top-bar topbar-responsive">
-<div class="top-bar-title">
-<span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
-<button class="menu-icon" type="button" data-toggle></button>
-</span>
-<a class="topbar-responsive-logo" href="#"><strong>Site Title</strong></a>
-</div>
-<div id="topbar-responsive" class="topbar-responsive-links">
-<div class="top-bar-right">
-<ul class="menu simple vertical medium-horizontal">
-<li><a href="#">Home</a></li>
-<li><a href="#">About</a></li>
-<li><a href="#">Services</a></li>
-<li><a href="#">Works</a></li>
-<li><a href="#">News</a></li>
-<li><a href="#">Contact</a></li>
-<li>
-<button type="button" class="button hollow topbar-responsive-button">Categories</button>
-</li>
-</ul>
-</div>
-</div>
+    <div class="top-bar-title">
+            <span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
+            <button class="menu-icon" type="button" data-toggle></button>
+            </span>
+        <a class="topbar-responsive-logo" href="#"><strong>Site Title</strong></a>
+    </div>
+    <div id="topbar-responsive" class="topbar-responsive-links">
+        <div class="top-bar-right">
+            <ul class="menu simple vertical medium-horizontal">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Works</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
+                <li>
+                    <button type="button" class="button hollow topbar-responsive-button">Categories</button>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
-    {% block body %}
-
-    {% endblock %}
-
+<div class="content">
+{% block body %}
+{% endblock %}
+</div>
 <footer class="mobile-bottom-bar">
     <a href="#" class="footer-link">
         <i class="fa fa-cog"></i> <span class='footer-text'>Settings</span>
@@ -51,11 +47,13 @@
         <i class="fa fa-sign-out"></i> <span class='footer-text'>Log out</span>
     </a>
 </footer>
-
-
-        {% block javascripts %}
-            {#<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>#}
-        {% endblock %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+    <script src="{{ asset("js/vendor/jquery.js")}}"></script>
+    <script src="{{ asset("js/vendor/what-input.js")}}"></script>
+    <script src="{{ asset("js/vendor/foundation.js")}}"></script>
+    <script src="{{ asset("js/app.js")}}"></script>
+{% endblock %}
 </body>
-
 </html>
+

@@ -8,7 +8,6 @@ namespace App\Controller;
 use App\Entity\DefaultCategory;
 use App\Repository\DefaultCategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
@@ -25,9 +24,9 @@ class DefaultCategoryController extends AbstractController
     /**
      * Index action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
-     * @param DefaultCategoryRepository $repository Repository
-     * @param \Knp\Component\Pager\PaginatorInterface $paginator Paginator
+     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param DefaultCategoryRepository                 $repository Repository
+     * @param \Knp\Component\Pager\PaginatorInterface   $paginator  Paginator
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -73,7 +72,7 @@ class DefaultCategoryController extends AbstractController
     /**
      * New action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
+     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
      * @param \App\Repository\DefaultCategoryRepository $repository Category repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
@@ -100,7 +99,7 @@ class DefaultCategoryController extends AbstractController
 
             $this->addFlash('success', 'message.created_successfully');
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render(
@@ -112,8 +111,8 @@ class DefaultCategoryController extends AbstractController
     /**
      * Edit action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
-     * @param \App\Entity\DefaultCategory $category Category entity
+     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Entity\DefaultCategory               $category   Category entity
      * @param \App\Repository\DefaultCategoryRepository $repository Category repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response

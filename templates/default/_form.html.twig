@@ -1,14 +1,13 @@
 {#{% extends 'base.html.twig' %}#}
 
-{#{% block title %}#}
-    {#{% if page_title_param is defined %}{{ page_title|trans(page_title_param) }}{% else %}{{ page_title|trans }}{% endif %}#}
-{#{% endblock %}#}
+{% block title %}
+    {#{% if page_title_param is defined %}#}
+        {#{{ page_title|trans(page_title_param) }}#}
+    {#{% else %}#}
+        {#{{ page_title|trans }}{% endif %}#}
+{% endblock %}
 
 {% block body %}
-
-    {#<h1>#}
-        {#{% if page_title_param is defined %}{{ page_title|trans(page_title_param) }}{% else %}{{ page_title|trans }}{% endif %}#}
-    {#</h1>#}
 
     {{ form_start(form, { method: attr.method|default('post'), action: attr.action }) }}
     {% if false == form.vars.valid %}
@@ -19,7 +18,7 @@
     {% endif %}
     {{ form_widget(form) }}
     {#<div class="form-group row float-sm-right">#}
-        {#<input type="submit" value="{{ submit_label|default('action.save'|trans) }}" class="btn btn-primary" />#}
+        <input type="submit" value="{{ submit_label|default(page_title|trans) }}" />
     {#</div>#}
     {#{% if back_to_list_path|default(false) %}#}
         {#<div class="form-group row float-sm-left">#}
