@@ -460,3 +460,43 @@ input[type=submit]:hover{
     text-decoration: none;
     color: white;
 }
+table{
+    width:80%;
+    margin: 0 auto;
+}
+table th a{
+    color:#373a36;
+}
+
+/*pagination*/
+
+.pagination-circular li.current {
+    border: 1px solid #1779ba;
+    border-radius: 5000px;
+    padding: 0.285em 0.8em;
+    font-size: 18px;
+}
+
+.pagination-circular li.disabled {
+    border: 1px solid #cacaca;
+    padding: 0.285em 0.8em;
+    border-radius: 5000px;
+    font-size: 18px;
+}
+
+.pagination-circular a {
+    border-radius: 5000px;
+    padding: 0.285em 0.8em;
+    border: 1px solid #1779ba;
+    font-size: 18px;
+}
+
+.pagination-circular li:not(.disabled):hover a {
+    background: #1779ba;
+    color: #fefefe;
+}
+
+.pagination-circular li a {
+    transition: background 0.15s ease-in, color 0.15s ease-in;
+}
+
