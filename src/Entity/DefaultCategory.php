@@ -33,7 +33,7 @@ class DefaultCategory
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $category_name;
+    private $categoryTitle;
 
     /**
      * @return int|null
@@ -84,14 +84,18 @@ class DefaultCategory
     /**
      * @return string|null
      */
-    public function getCategoryName(): ?string
+    public function getCategoryTitle(): ?string
     {
-        return $this->category_name;
+        return $this->categoryTitle;
     }
 
-    public function setCategoryName(string $category_name): self
+    /**
+     * @param string $categoryTitle
+     * @return DefaultCategory
+     */
+    public function setCategoryTitle(string $categoryTitle): self
     {
-        $this->category_name = $category_name;
+        $this->categoryTitle = $categoryTitle;
 
         return $this;
     }

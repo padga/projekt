@@ -38,6 +38,22 @@
                 <source>label.first_name</source>
                 <target>First name</target>
             </trans-unit>
+            <trans-unit id="title.category_new">
+                <source>title.category_new</source>
+                <target>Dodaj karegorię</target>
+            </trans-unit>
+            <trans-unit id="label.category_name">
+                <source>label.category_name</source>
+                <target>Nazwa kategorii</target>
+            </trans-unit>
+            <trans-unit id="message.not_empty">
+                <source>message.not_empty</source>
+                <target>This field cannot be empty!</target>
+            </trans-unit>
+            <trans-unit id="message.category_created_successfully">
+                <source>message.category_created_successfully</source>
+                <target>Category added successfully!</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -46,6 +46,18 @@
             <source>label.category_name</source>
             <target>Nazwa kategorii</target>
             </trans-unit>
+            <trans-unit id="message.not_empty">
+                <source>message.not_empty</source>
+                <target>To pole nie może być puste!</target>
+            </trans-unit>
+            <trans-unit id="message.category_created_successfully">
+                <source>message.category_created_successfully</source>
+                <target>Dodano kategorię!</target>
+            </trans-unit>
+            <trans-unit id="title.category_index">
+                <source>title.category_index</source>
+                <target>Kategorie</target>
+            </trans-unit>
 
 
         </body>

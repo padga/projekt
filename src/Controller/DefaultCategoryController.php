@@ -97,9 +97,9 @@ class DefaultCategoryController extends AbstractController
             $category->setUpdatedAt(new \DateTime());
             $repository->save($category);
 
-            $this->addFlash('success', 'message.created_successfully');
+            $this->addFlash('success', 'message.category_created_successfully');
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('category_index');
         }
 
         return $this->render(
