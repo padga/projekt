@@ -58,7 +58,26 @@
                 <source>title.category_index</source>
                 <target>Kategorie</target>
             </trans-unit>
-
+            <trans-unit id="label.created_at">
+                <source>label.created_at</source>
+                <target>Utworzono</target>
+            </trans-unit>
+            <trans-unit id="label.updated_at">
+                <source>label.updated_at</source>
+                <target>Data aktualizacji</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Nazwa</target>
+            </trans-unit>
+            <trans-unit id="message.add_category">
+                <source>message.add_category</source>
+                <target>Dodaj nową kategorię</target>
+            </trans-unit>
+            <trans-unit id="message.created_successfully">
+                <source>message.created_successfully</source>
+                <target>Konto utworzone!</target>
+            </trans-unit>
 
         </body>
     </file>

@@ -53,10 +53,12 @@ input[type=submit]:hover{
 /* wiadomości flash */
 
 .alert-callout-border {
-    width: 100%;
+    width: 50%;
     padding: 1.3rem;
     border-left-width: 0.3125rem;
     border-left-color: #cacaca;
+    margin: 0 auto;
+    margin-top:10%;
 }
 
 .alert-callout-border strong {
@@ -372,8 +374,9 @@ input[type=submit]:hover{
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    background: url("https://images.unsplash.com/photo-1470049384172-927891aad5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80") center center no-repeat;
+    /*background: url("https://images.unsplash.com/photo-1470049384172-927891aad5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80") center center no-repeat;*/
     background-size: cover;
+    background-color: rgb(78, 78, 78);
 }
 
 .hero-full-screen .middle-content-section {
@@ -468,35 +471,33 @@ table th a{
     color:#373a36;
 }
 
-/*pagination*/
-
-.pagination-circular li.current {
-    border: 1px solid #1779ba;
-    border-radius: 5000px;
-    padding: 0.285em 0.8em;
-    font-size: 18px;
-}
-
-.pagination-circular li.disabled {
-    border: 1px solid #cacaca;
-    padding: 0.285em 0.8em;
-    border-radius: 5000px;
-    font-size: 18px;
-}
-
-.pagination-circular a {
-    border-radius: 5000px;
-    padding: 0.285em 0.8em;
-    border: 1px solid #1779ba;
-    font-size: 18px;
-}
-
-.pagination-circular li:not(.disabled):hover a {
-    background: #1779ba;
+.add-category-button{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1rem 0;
+    margin-left: 3%;
+    padding: 0.85em 1em;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    font-family: inherit;
+    /*font-size: 0.9rem;*/
+    -webkit-appearance: none;
+    line-height: 0.8rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: #373a36;
     color: #fefefe;
+    font-size: 1rem;
+    max-width: 15%;
 }
-
-.pagination-circular li a {
-    transition: background 0.15s ease-in, color 0.15s ease-in;
-}
-
+/*.add-category-button p{*/
+    /*float:right;*/
+    /*padding:1%;*/
+/*}*/
+/*.add-category-button img{*/
+    /*display: inline;*/
+    /*padding: 1%;*/
+    /*margin: 5%;*/
+/*}*/

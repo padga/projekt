@@ -29,13 +29,14 @@
                 <li><a href="#">News</a></li>
                 <li><a href="#">Contact</a></li>
                 <li>
-                    <button type="button" class="button hollow topbar-responsive-button">Categories</button>
+                    <button type="button" class="button hollow topbar-responsive-button"><a href="{{ url("category_index")}}">Categories</a></button>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 {#<div class="content">#}
+
 {% include 'default/flash_messages.html.twig' %}
 {% block body %}
 {% endblock %}

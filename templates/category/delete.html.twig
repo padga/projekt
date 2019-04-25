@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    {{ 'title.category_delete'|trans({'%id%': category.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    {% include 'default/_form.html.twig' with {
+        page_title: 'title.category_delete',
+        page_title_param: {'%id%': category.id},
+        attr: {
+            method: 'delete',
+            action: url('category_delete', {'id': category.id}),
+        },
+        back_to_list_path: 'category_index',
+    } %}
+{% endblock %}
+

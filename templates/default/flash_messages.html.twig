@@ -1,15 +1,8 @@
 {% if app.session.flashBag.peekAll is not empty %}
-    {#{% for type, flash_messages in app.session.flashBag.all %}#}
-        {#{% for msg in flash_messages %}#}
-            {#{% if msg.type =="success" %}#}
-            {#<div class="alert alert-{{ type }}">#}
-                {#{{ msg }}#}
-            {#</div>#}
-        {#{% endfor %}#}
-    {#{% endfor %}#}
+
     {% for message in app.flashes('success') %}
         <div data-closable class="alert-box callout success">
-            <i class="fa fa-check"></i> {{ message }}
+            <i class="fa fa-check"></i> {{ message|trans }}
             <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                 <span aria-hidden="true">&CircleTimes;</span>
             </button>
@@ -17,17 +10,14 @@
     {% endfor %}
     {% for message in app.flashes('error') %}
         <div data-closable class="alert-box callout alert">
-            <i class="fa fa-ban"></i> {{ message }}
+            <i class="fa fa-ban"></i> {{ message|trans }}
             <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                 <span aria-hidden="true">&CircleTimes;</span>
             </button>
         </div>
         {% for message in app.flashes('warning') %}
-            {#<div class="flash-notice">#}
-                {#{{ message }}#}
-            {#</div>#}
             <div data-closable class="alert-box callout warning">
-                <i class="fa fa-exclamation-triangle"></i> {{ message }}
+                <i class="fa fa-exclamation-triangle"></i> {{ message|trans }}
                 <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                     <span aria-hidden="true">&CircleTimes;</span>
                 </button>

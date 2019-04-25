@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use App\Form\CategoryType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 /**
  * Class DefaultCategoryController.
@@ -51,7 +52,7 @@ class DefaultCategoryController extends AbstractController
     /**
      * View action.
      *
-     * @param DefaultCategory $category
+     * @param DefaultCategory $defaultCategory
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -61,11 +62,11 @@ class DefaultCategoryController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function view(DefaultCategory $category): Response
+    public function view(DefaultCategory $defaultCategory): Response
     {
         return $this->render(
             'category/view.html.twig',
-            ['category' => $category]
+            ['category' => $defaultCategory]
         );
     }
 
@@ -133,7 +134,7 @@ class DefaultCategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-//            $category->setUpdatedAt(new \DateTime());
+            $category->setUpdatedAt(new \DateTime());
             $repository->save($category);
 
             $this->addFlash('success', 'message.updated_successfully');

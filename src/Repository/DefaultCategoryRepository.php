@@ -27,35 +27,6 @@ class DefaultCategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, DefaultCategory::class);
     }
 
-    // /**
-    //  * @return DefaultCategory[] Returns an array of DefaultCategory objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?DefaultCategory
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-
     /**
      * Query all records.
      *

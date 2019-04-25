@@ -5,6 +5,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class DefaultCategory
 {
+    const NUMBER_OF_ITEMS = 10;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -35,6 +37,14 @@ class DefaultCategory
      */
     private $categoryTitle;
 
+//    /**
+//     * @ORM\Column(type="string", length=64)
+//     */
+    public function __construct()
+    {
+        $this->tasks = new ArrayCollection();
+    }
+
     /**
      * @return int|null
      */
@@ -53,6 +63,7 @@ class DefaultCategory
 
     /**
      * @param \DateTimeInterface $createdAt
+     *
      * @return DefaultCategory
      */
     public function setCreatedAt(\DateTimeInterface $createdAt): self
@@ -72,6 +83,7 @@ class DefaultCategory
 
     /**
      * @param \DateTimeInterface $updatedAt
+     *
      * @return DefaultCategory
      */
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
@@ -91,6 +103,7 @@ class DefaultCategory
 
     /**
      * @param string $categoryTitle
+     *
      * @return DefaultCategory
      */
     public function setCategoryTitle(string $categoryTitle): self

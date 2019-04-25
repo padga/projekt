@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Class UserController.
@@ -35,9 +36,10 @@ class UserController extends AbstractController
     /**
      * New action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\UserRepository            $repository Category repository
+     * @param           \Symfony\Component\HttpFoundation\Request $request HTTP request
+     * @param            \App\Repository\UserRepository $repository Category repository
      *
+     * @param            UserPasswordEncoderInterface $passwordEncoder
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @throws \Doctrine\ORM\ORMException
@@ -49,7 +51,7 @@ class UserController extends AbstractController
      *     name="auth_register",
      * )
      */
-    public function new(Request $request, UserRepository $repository): Response
+    public function new(Request $request, UserRepository $repository, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
@@ -58,11 +60,15 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 //            $category->setCreatedAt(new \DateTime());
 //            $category->setUpdatedAt(new \DateTime());
+            $password = $user->getPassword();
+            $user->setRoles(['ROLE_USER']);
+            $password = $passwordEncoder->encodePassword($user, $password);
+            $user->setPassword($password);
             $repository->save($user);
 
             $this->addFlash('success', 'message.created_successfully');
 
-            return $this->redirectToRoute('/');
+            return $this->redirectToRoute('security_login');
         }
 
         return $this->render(

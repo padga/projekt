@@ -8,7 +8,6 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -73,7 +72,6 @@ class User implements UserInterface
      * @Assert\Email
      */
     private $email;
-
     /**
      * Password.
      *
@@ -84,9 +82,7 @@ class User implements UserInterface
      *     min="3",
      *     max="255",
      * )
-     *
-     * @SecurityAssert\UserPassword
-     */
+     *     */
     private $password;
 
     /**
@@ -119,7 +115,6 @@ class User implements UserInterface
         return $this->id;
     }
 
-
     /**
      * Getter for the E-mail.
      *
@@ -151,7 +146,6 @@ class User implements UserInterface
     {
         return (string) $this->email;
     }
-
     /**
      * Getter for the Password.
      *
@@ -165,7 +159,7 @@ class User implements UserInterface
     /**
      * Setter for the Password.
      *
-     * @param string $password Password
+     * @param string $password password
      */
     public function setPassword(string $password): void
     {
@@ -232,5 +226,4 @@ class User implements UserInterface
     {
         $this->firstName = $firstName;
     }
-
 }
