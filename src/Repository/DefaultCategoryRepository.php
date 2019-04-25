@@ -1,6 +1,6 @@
 <?php
 /**
- *  DefaultCategory entity.
+ *  DefaultCategory Repository.
  */
 
 namespace App\Repository;

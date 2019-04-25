@@ -36,10 +36,10 @@ class UserController extends AbstractController
     /**
      * New action.
      *
-     * @param           \Symfony\Component\HttpFoundation\Request $request HTTP request
-     * @param            \App\Repository\UserRepository $repository Category repository
+     * @param \Symfony\Component\HttpFoundation\Request $request         HTTP request
+     * @param \App\Repository\UserRepository            $repository      User repository
+     * @param UserPasswordEncoderInterface              $passwordEncoder
      *
-     * @param            UserPasswordEncoderInterface $passwordEncoder
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @throws \Doctrine\ORM\ORMException
@@ -58,8 +58,6 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-//            $category->setCreatedAt(new \DateTime());
-//            $category->setUpdatedAt(new \DateTime());
             $password = $user->getPassword();
             $user->setRoles(['ROLE_USER']);
             $password = $passwordEncoder->encodePassword($user, $password);

@@ -27,12 +27,12 @@
     </tr>
     </thead>
     <tbody>
-    {% for category in pagination %}
+    {% for users in pagination %}
         <tr>
-            <td>{{ category.id }}</td>
-            <td>{{ category.createdAt|localizeddate }}</td>
-            <td>{{ category.updatedAt|localizeddate }}</td>
-            <td>{{ category.categoryTitle }}</td>
+            <td>{{ users.id }}</td>
+            <td>{{ users.email }}</td>
+            {#<td>{{ users.updatedAt|localizeddate }}</td>#}
+            <td>{{ users.firstName }}</td>
 
             <td>
                 <a href="{{ url('category_view', {id: category.id}) }}" title="{{ 'action.view'|trans }}">

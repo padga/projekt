@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use App\Form\CategoryType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 /**
  * Class DefaultCategoryController.

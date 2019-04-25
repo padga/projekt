@@ -23,7 +23,7 @@ class AdminController extends AbstractController
      * Users index action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param UserRepository                 $repository Repository
+     * @param \App\Repository\UserRepository            $repository User repository
      * @param \Knp\Component\Pager\PaginatorInterface   $paginator  Paginator
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
@@ -33,7 +33,7 @@ class AdminController extends AbstractController
      *     name="users_index",
      * )
      */
-    public function user_index(Request $request, UserRepository $repository, PaginatorInterface $paginator): Response
+    public function index(Request $request, UserRepository $repository, PaginatorInterface $paginator): Response
     {
         $pagination = $paginator->paginate(
             $repository->queryAll(),
@@ -41,9 +41,8 @@ class AdminController extends AbstractController
         );
 
         return $this->render(
-            'admin/index.html.twig',
+            'admin/users_index.html.twig',
             ['pagination' => $pagination]
         );
     }
-
 }
