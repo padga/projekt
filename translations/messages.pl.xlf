@@ -78,7 +78,18 @@
                 <source>message.created_successfully</source>
                 <target>Konto utworzone!</target>
             </trans-unit>
-
+            <trans-unit id="message.add_user">
+                <source>message.add_user</source>
+                <target>Dodaj nowego użytkownika</target>
+            </trans-unit>
+            <trans-unit id="message.empty_list">
+                <source>message.empty_list</source>
+                <target>Brak wyników</target>
+            </trans-unit>
+            <trans-unit id="title.users_index">
+                <source>title.users_index</source>
+                <target>Użytkownicy</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

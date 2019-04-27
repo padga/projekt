@@ -62,6 +62,19 @@
                 <source>message.created_successfully</source>
                 <target>Registered successfully!</target>
             </trans-unit>
+            <trans-unit id="message.add_user">
+                <source>message.add_user</source>
+                <target>Add new user</target>
+            </trans-unit>
+            <trans-unit id="message.empty_list">
+                <source>message.empty_list</source>
+                <target>No records found</target>
+            </trans-unit>
+            <trans-unit id="title.users_index">
+                <source>title.users_index</source>
+                <target>Users list</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
