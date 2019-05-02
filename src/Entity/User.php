@@ -5,10 +5,11 @@
 
 namespace App\Entity;
 
+use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class User.
@@ -26,7 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @UniqueEntity(fields={"email"})
  */
-class User implements UserInterface
+class User
 {
     /**
      * Role user.
@@ -34,81 +35,61 @@ class User implements UserInterface
      * @var string
      */
     const ROLE_USER = 'ROLE_USER';
-
     /**
      * Role admin.
      *
      * @var string
      */
     const ROLE_ADMIN = 'ROLE_ADMIN';
-
     /**
-     * Primary key.
-     *
-     * @var int
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(
-     *     name="id",
-     *     type="integer",
-     *     nullable=false,
-     *     options={"unsigned"=true},
-     * )
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * E-mail.
-     *
-     * @var string
-     *
-     * @ORM\Column(
-     *     type="string",
-     *     length=128,
-     * )
-     *
-     * @Assert\NotBlank
-     * @Assert\Email
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\Column(type="string", length=255)
      */
     private $email;
+
     /**
-     * Password.
-     *
      * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *     min="3",
-     *     max="255",
-     * )
-     *     */
+     */
     private $password;
 
     /**
-     * Roles.
-     *
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="array")
      */
     private $roles = [];
 
     /**
-     * First name.
-     *
      * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *     min="3",
-     *     max="255",
-     * )
      */
     private $firstName;
 
     /**
-     * Getter for the Id.
-     *
-     * @return int|null Result
+     * @ORM\OneToMany(targetEntity="App\Entity\Transaction", mappedBy="owner", orphanRemoval=true)
+     */
+    private $transactions;
+
+    public function __construct()
+    {
+        $this->transactions = new ArrayCollection();
+    }
+
+    /**
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -116,9 +97,47 @@ class User implements UserInterface
     }
 
     /**
-     * Getter for the E-mail.
+     * @return DateTimeInterface|null
+     */
+    public function getCreatedAt(): ?DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param DateTimeInterface $createdAt
      *
-     * @return string|null E-mail
+     * @return User
+     */
+    public function setCreatedAt(DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param DateTimeInterface $updatedAt
+     *
+     * @return User
+     */
+    public function setUpdatedAt(DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -126,30 +145,19 @@ class User implements UserInterface
     }
 
     /**
-     * Setter for the E-mail.
+     * @param string $email
      *
-     * @param string $email E-mail
+     * @return User
      */
-    public function setEmail(string $email): void
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @see UserInterface
-     *
-     * @return string User name
-     */
-    public function getUsername(): string
-    {
-        return (string) $this->email;
-    }
-    /**
-     * Getter for the Password.
-     *
-     * @return string|null Password
+     * @return string|null
      */
     public function getPassword(): ?string
     {
@@ -157,60 +165,39 @@ class User implements UserInterface
     }
 
     /**
-     * Setter for the Password.
+     * @param string $password
      *
-     * @param string $password password
+     * @return User
      */
-    public function setPassword(string $password): void
+    public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
     }
 
     /**
-     * Getter for the Roles.
-     *
-     * @return array Roles
+     * @return array|null
      */
-    public function getRoles(): array
+    public function getRoles(): ?array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = static::ROLE_USER;
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
     /**
-     * Setter for the Roles.
+     * @param array $roles
      *
-     * @param array $roles Roles
+     * @return User
      */
-    public function setRoles(array $roles): void
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
     }
 
     /**
-     * @see UserInterface
-     */
-    public function getSalt()
-    {
-        // not needed when using bcrypt or argon
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
-
-    /**
-     * Getter for the First name.
-     *
-     * @return string|null First name
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -218,12 +205,45 @@ class User implements UserInterface
     }
 
     /**
-     * Setter for the First Name.
+     * @param string $firstName
      *
-     * @param string $firstName First Name
+     * @return User
      */
-    public function setFirstName(string $firstName): void
+    public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transaction[]
+     */
+    public function getTransactions(): Collection
+    {
+        return $this->transactions;
+    }
+
+    public function addTransaction(Transaction $transaction): self
+    {
+        if (!$this->transactions->contains($transaction)) {
+            $this->transactions[] = $transaction;
+            $transaction->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransaction(Transaction $transaction): self
+    {
+        if ($this->transactions->contains($transaction)) {
+            $this->transactions->removeElement($transaction);
+            // set the owning side to null (unless already changed)
+            if ($transaction->getOwner() === $this) {
+                $transaction->setOwner(null);
+            }
+        }
+
+        return $this;
     }
 }

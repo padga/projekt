@@ -1,12 +1,8 @@
 <?php
-/**
- * User repository.
- */
+
 namespace App\Repository;
 
 use App\Entity\User;
-use Doctrine\ORM\ORMException;
-use Doctrine\ORM\QueryBuilder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -18,64 +14,37 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UserRepository extends ServiceEntityRepository
 {
-    /**
-     * DefaultCategoryRepository constructor.
-     *
-     * @param RegistryInterface $registry
-     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, User::class);
     }
 
-    /**
-     * Query all records.
-     *
-     * @return QueryBuilder
-     */
-    public function queryAll(): QueryBuilder
+    // /**
+    //  * @return User[] Returns an array of User objects
+    //  */
+    /*
+    public function findByExampleField($value)
     {
-        return $this->getOrCreateQueryBuilder();
-//            ->orderBy('t.email', 'DESC');
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('u.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
     }
+    */
 
-    /**
-     * Save record.
-     *
-     * @param User $user
-     *
-     * @throws ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     */
-    public function save(User $user): void
+    /*
+    public function findOneBySomeField($value): ?User
     {
-        $this->_em->persist($user);
-        $this->_em->flush($user);
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
-
-    /**
-     * Delete record.
-     *
-     * @param User $user
-     *
-     * @throws ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     */
-    public function delete(User $user): void
-    {
-        $this->_em->remove($user);
-        $this->_em->flush($user);
-    }
-
-    /**
-     * Get or create new query builder.
-     *
-     * @param \Doctrine\ORM\QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return \Doctrine\ORM\QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?: $this->createQueryBuilder('t');
-    }
+    */
 }
