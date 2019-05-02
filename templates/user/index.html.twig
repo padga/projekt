@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    {{ 'title.user_index'|trans }}
+
+{% endblock %}
+
+{% block body %}
+
+    <canvas id="myChart">
+        <script src="{{ asset("js/chart.js")}}"></script>
+    </canvas>
+
+{% endblock %}
+
+{% endblock %}

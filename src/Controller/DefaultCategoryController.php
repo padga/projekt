@@ -51,7 +51,7 @@ class DefaultCategoryController extends AbstractController
     /**
      * View action.
      *
-     * @param DefaultCategory $defaultCategory
+     * @param DefaultCategory $category
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -61,11 +61,11 @@ class DefaultCategoryController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function view(DefaultCategory $defaultCategory): Response
+    public function view(DefaultCategory $category): Response
     {
         return $this->render(
             'category/view.html.twig',
-            ['category' => $defaultCategory]
+            ['category' => $category]
         );
     }
 
@@ -79,6 +79,7 @@ class DefaultCategoryController extends AbstractController
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Exception
      *
      * @Route(
      *     "/new",
@@ -119,6 +120,7 @@ class DefaultCategoryController extends AbstractController
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Exception
      *
      * @Route(
      *     "/{id}/edit",

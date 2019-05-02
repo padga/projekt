@@ -37,11 +37,11 @@
             {#<td>{{ users.updatedAt|localizeddate }}</td>#}
             <td>{{ users.firstName }}</td>
 
-            {#<td>#}
-                {#<a href="{{ url('category_view', {id: category.id}) }}" title="{{ 'action.view'|trans }}">#}
-                    {#{{ 'action.view'|trans }}#}
-                {#</a>#}
-            {#</td>#}
+            <td>
+                <a href="{{ url('admin_view', {id: users.id}) }}" title="{{ 'action.view'|trans }}">
+                    {{ 'action.view'|trans }}
+                </a>
+            </td>
         </tr>
     {% endfor %}
     </tbody>

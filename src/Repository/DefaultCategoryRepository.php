@@ -20,6 +20,7 @@ class DefaultCategoryRepository extends ServiceEntityRepository
 {
     /**
      * DefaultCategoryRepository constructor.
+     *
      * @param RegistryInterface $registry
      */
     public function __construct(RegistryInterface $registry)
