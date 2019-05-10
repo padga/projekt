@@ -2,6 +2,7 @@
 /**
  * Tag entity.
  */
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -41,21 +42,41 @@ class Tag
      */
     private $transactions;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tags")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;
+
+    /**
+     * Tag constructor.
+     */
     public function __construct()
     {
         $this->transactions = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
+    /**
+     * @param \DateTimeInterface $createdAt
+     *
+     * @return Tag
+     */
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
@@ -63,11 +84,19 @@ class Tag
         return $this;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
+    /**
+     * @param \DateTimeInterface $updatedAt
+     *
+     * @return Tag
+     */
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
@@ -75,11 +104,19 @@ class Tag
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTagName(): ?string
     {
         return $this->tagName;
     }
 
+    /**
+     * @param string $tagName
+     *
+     * @return Tag
+     */
     public function setTagName(string $tagName): self
     {
         $this->tagName = $tagName;
@@ -95,6 +132,11 @@ class Tag
         return $this->transactions;
     }
 
+    /**
+     * @param Transaction $transaction
+     *
+     * @return Tag
+     */
     public function addTransaction(Transaction $transaction): self
     {
         if (!$this->transactions->contains($transaction)) {
@@ -105,12 +147,29 @@ class Tag
         return $this;
     }
 
+    /**
+     * @param Transaction $transaction
+     *
+     * @return Tag
+     */
     public function removeTransaction(Transaction $transaction): self
     {
         if ($this->transactions->contains($transaction)) {
             $this->transactions->removeElement($transaction);
             $transaction->removeTag($this);
         }
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }

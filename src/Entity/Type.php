@@ -42,21 +42,35 @@ class Type
      */
     private $transactions;
 
+    /**
+     * Type constructor.
+     */
     public function __construct()
     {
         $this->transactions = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
+    /**
+     * @param \DateTimeInterface $createdAt
+     *
+     * @return Type
+     */
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
@@ -64,11 +78,19 @@ class Type
         return $this;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
+    /**
+     * @param \DateTimeInterface $updatedAt
+     *
+     * @return Type
+     */
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
@@ -76,11 +98,19 @@ class Type
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTypeTitle(): ?string
     {
         return $this->typeTitle;
     }
 
+    /**
+     * @param string $typeTitle
+     *
+     * @return Type
+     */
     public function setTypeTitle(string $typeTitle): self
     {
         $this->typeTitle = $typeTitle;
@@ -96,6 +126,11 @@ class Type
         return $this->transactions;
     }
 
+    /**
+     * @param Transaction $transaction
+     *
+     * @return Type
+     */
     public function addTransaction(Transaction $transaction): self
     {
         if (!$this->transactions->contains($transaction)) {
@@ -106,6 +141,11 @@ class Type
         return $this;
     }
 
+    /**
+     * @param Transaction $transaction
+     *
+     * @return Type
+     */
     public function removeTransaction(Transaction $transaction): self
     {
         if ($this->transactions->contains($transaction)) {

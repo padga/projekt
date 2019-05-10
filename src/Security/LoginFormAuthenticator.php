@@ -52,7 +52,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     /**
      * Password encoder.
      *
-     * @var \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface
      */
     private $passwordEncoder;
 

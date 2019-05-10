@@ -54,6 +54,9 @@ class Transaction
      */
     private $type;
 
+    /**
+     * Transaction constructor.
+     */
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -127,11 +130,19 @@ class Transaction
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getOwner(): ?User
     {
         return $this->owner;
     }
 
+    /**
+     * @param User|null $owner
+     *
+     * @return Transaction
+     */
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
@@ -147,6 +158,11 @@ class Transaction
         return $this->tags;
     }
 
+    /**
+     * @param Tag $tag
+     *
+     * @return Transaction
+     */
     public function addTag(Tag $tag): self
     {
         if (!$this->tags->contains($tag)) {
@@ -156,6 +172,11 @@ class Transaction
         return $this;
     }
 
+    /**
+     * @param Tag $tag
+     *
+     * @return Transaction
+     */
     public function removeTag(Tag $tag): self
     {
         if ($this->tags->contains($tag)) {
@@ -165,11 +186,19 @@ class Transaction
         return $this;
     }
 
+    /**
+     * @return Type|null
+     */
     public function getType(): ?Type
     {
         return $this->type;
     }
 
+    /**
+     * @param Type|null $type
+     *
+     * @return Transaction
+     */
     public function setType(?Type $type): self
     {
         $this->type = $type;

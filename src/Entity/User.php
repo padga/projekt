@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class User.
@@ -27,7 +28,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @UniqueEntity(fields={"email"})
  */
-class User
+class User implements UserInterface
 {
     /**
      * Role user.
@@ -83,9 +84,18 @@ class User
      */
     private $transactions;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Tag", mappedBy="owner", orphanRemoval=true)
+     */
+    private $tags;
+
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->transactions = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -224,6 +234,11 @@ class User
         return $this->transactions;
     }
 
+    /**
+     * @param Transaction $transaction
+     *
+     * @return User
+     */
     public function addTransaction(Transaction $transaction): self
     {
         if (!$this->transactions->contains($transaction)) {
@@ -234,6 +249,11 @@ class User
         return $this;
     }
 
+    /**
+     * @param Transaction $transaction
+     *
+     * @return User
+     */
     public function removeTransaction(Transaction $transaction): self
     {
         if ($this->transactions->contains($transaction)) {
@@ -241,6 +261,70 @@ class User
             // set the owning side to null (unless already changed)
             if ($transaction->getOwner() === $this) {
                 $transaction->setOwner(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+            $tag->setOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+            // set the owning side to null (unless already changed)
+            if ($tag->getOwner() === $this) {
+                $tag->setOwner(null);
             }
         }
 
