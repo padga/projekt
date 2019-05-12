@@ -16,6 +16,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Class UserController.
+ * @Route("/")
  */
 class UserController extends AbstractController
 {
@@ -23,7 +24,7 @@ class UserController extends AbstractController
      * Index action.
      *
      * @Route(
-     *     "/"
+     *     "/", name="dashboard"
      * )
      *
      * @return \Symfony\Component\HttpFoundation\Response

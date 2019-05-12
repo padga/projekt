@@ -1,20 +1,20 @@
 <?php
 /**
- * Category type.
+ * Tag type.
  */
 
 namespace App\Form;
 
-use App\Entity\DefaultCategory;
+use App\Entity\Tag;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class CategoryType.
+ * Class TagType.
  */
-class CategoryType extends AbstractType
+class TagType extends AbstractType
 {
     /**
      * Builds the form.
@@ -30,10 +30,10 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'categoryTitle',
+            'tagName',
             TextType::class,
             [
-                'label' => 'label.category_name',
+                'label' => 'label.tag_name',
                 'required' => true,
                 'attr' => ['max_length' => 255,
                     'message' => 'message.not_empty',
@@ -49,7 +49,7 @@ class CategoryType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => DefaultCategory::class]);
+        $resolver->setDefaults(['data_class' => Tag::class]);
     }
 
     /**
@@ -62,6 +62,6 @@ class CategoryType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'defaultCategory';
+        return 'tag';
     }
 }

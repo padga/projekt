@@ -1,8 +1,12 @@
 <?php
+/**
+ * Tag Repository.
+ */
 
 namespace App\Repository;
 
 use App\Entity\Tag;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -14,37 +18,64 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TagRepository extends ServiceEntityRepository
 {
+    /**
+     * CategoryRepository constructor.
+     *
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Tag::class);
     }
 
-    // /**
-    //  * @return Tag[] Returns an array of Tag objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Query all records.
+     *
+     * @return QueryBuilder
+     */
+    public function queryAll(): QueryBuilder
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->getOrCreateQueryBuilder()
+            ->orderBy('t.updatedAt', 'DESC');
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Tag
+    /**
+     * Save record.
+     *
+     * @param \App\Entity\Tag $tag Tag entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save(Tag $tag): void
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $this->_em->persist($tag);
+        $this->_em->flush($tag);
     }
-    */
+
+    /**
+     * Delete record.
+     *
+     * @param \App\Entity\Tag $tag Tag entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Tag $tag): void
+    {
+        $this->_em->remove($tag);
+        $this->_em->flush($tag);
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param \Doctrine\ORM\QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?: $this->createQueryBuilder('t');
+    }
 }

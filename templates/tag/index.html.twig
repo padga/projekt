@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.category_index'|trans }}
+    {{ 'title.tags_index'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -10,15 +10,15 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
-        {#{% if not category.tasks|length %}#}
-        {#<a href="{{ url('category_delete', {id: category.id}) }}" title="{{ 'action.delete'|trans }}">#}
+        {#{% if not tag.tasks|length %}#}
+        {#<a href="{{ url('category_delete', {id: tag.id}) }}" title="{{ 'action.delete'|trans }}">#}
         {#{{ 'action.delete'|trans }}#}
         {#</a>#}
         {#{% endif %}#}
-        <a href="{{ url('category_new') }}">
+        <a href="{{ url('tag_new') }}">
         <div class ="add-category-button">
 
-           {{ 'message.add_category'|trans }}
+           {{ 'message.add_tag'|trans }}
         </div>
         </a>
         <table class="table table-striped">
@@ -27,25 +27,27 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 't.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 't.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 't.updatedAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 't.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.tagName'|trans, 't.title') }}</th>
 
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for category in pagination %}
+            {% for tag in pagination %}
+                {% if tag.owner == user%}
                 <tr>
-                    <td>{{ category.id }}</td>
-                    <td>{{ category.createdAt|localizeddate }}</td>
-                    <td>{{ category.updatedAt|localizeddate }}</td>
-                    <td>{{ category.categoryTitle }}</td>
+                    <td>{{ tag.id }}</td>
+                    <td>{{ tag.createdAt|localizeddate }}</td>
+                    <td>{{ tag.updatedAt|localizeddate }}</td>
+                    <td>{{ tag.tagName }}</td>
 
                     <td>
-                        <a href="{{ url('category_view', {id: category.id}) }}" title="{{ 'action.view'|trans }}">
+                        <a href="{{ url('tag_view', {id: tag.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
                         </a>
                     </td>
                 </tr>
+                {% endif %}
             {% endfor %}
             </tbody>
         </table>
@@ -58,5 +60,11 @@
         <p>
             {{ 'message.empty_list'|trans }}
         </p>
+        <a href="{{ url('tag_new') }}">
+            <div class ="add-category-button">
+
+                {{ 'message.add_tag'|trans }}
+            </div>
+        </a>
     {% endif %}
 {% endblock %}

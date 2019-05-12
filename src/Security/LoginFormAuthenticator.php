@@ -52,6 +52,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     /**
      * Password encoder.
      *
+     * @var \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface
      */
     private $passwordEncoder;
 
@@ -160,7 +161,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->router->generate('security_login'));
+        return new RedirectResponse($this->router->generate('dashboard'));
     }
 
     /**

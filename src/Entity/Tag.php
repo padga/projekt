@@ -8,10 +8,18 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
- * * @ORM\Table(name="tags")
+ *
+ * @ORM\Table(name="tags",
+ *  uniqueConstraints={
+ *        @ORM\UniqueConstraint(name="tag_unique",
+ *            columns={"tagName", "owner"})})
+ *
+ * @UniqueEntity(fields={"tagName", "owner"}, message="message.duplicate")
  */
 class Tag
 {
@@ -162,11 +170,19 @@ class Tag
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getOwner(): ?User
     {
         return $this->owner;
     }
 
+    /**
+     * @param User|null $owner
+     *
+     * @return Tag
+     */
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
