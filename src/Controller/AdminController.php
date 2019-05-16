@@ -46,22 +46,22 @@ class AdminController extends AbstractController
             ['pagination' => $pagination]
         );
     }
-
-    /**
-     * @param User $user
-     *
-     * @return Response
-     *                  * @Route(
-     *                  "/user/{id}",
-     *                  name="admin_view",
-     *                  requirements={"id": "[1-9]\d*"},
-     *                  )
-     */
-    public function view(User $user): Response
-    {
-        return $this->render(
-            'admin/view.html.twig',
-            ['user' => $user]
-        );
-    }
+//
+//    /**
+//     * @param User $user
+//     *
+//     * @return Response
+//     *                  * @Route(
+//     *                  "/user/{id}",
+//     *                  name="admin_edit",
+//     *                  requirements={"id": "[1-9]\d*"},
+//     *                  )
+//     */
+//    public function edit(User $user): Response
+//    {
+//        return $this->render(
+//            'user/edit.html.twig',
+//            ['user' => $user]
+//        );
+//    }
 }

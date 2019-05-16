@@ -38,25 +38,25 @@
                 <source>label.first_name</source>
                 <target>Imię</target>
             </trans-unit>
-            <trans-unit id="title.category_new">
-                <source>title.category_new</source>
-                <target>Dodaj karegorię</target>
+            <trans-unit id="title.tag_new">
+                <source>title.tag_new</source>
+                <target>Dodaj tag</target>
             </trans-unit>
-            <trans-unit id="label.category_name">
-            <source>label.category_name</source>
-            <target>Nazwa kategorii</target>
+            <trans-unit id="label.tag_name">
+            <source>label.tag_name</source>
+            <target>Nazwa tagu</target>
             </trans-unit>
             <trans-unit id="message.not_empty">
                 <source>message.not_empty</source>
                 <target>To pole nie może być puste!</target>
             </trans-unit>
-            <trans-unit id="message.category_created_successfully">
-                <source>message.category_created_successfully</source>
-                <target>Dodano kategorię!</target>
+            <trans-unit id="message.tag_created_successfully">
+                <source>message.tag_created_successfully</source>
+                <target>Dodano tag!</target>
             </trans-unit>
-            <trans-unit id="title.category_index">
-                <source>title.category_index</source>
-                <target>Kategorie</target>
+            <trans-unit id="title.tag_index">
+                <source>title.tag_index</source>
+                <target>Tagi</target>
             </trans-unit>
             <trans-unit id="label.created_at">
                 <source>label.created_at</source>
@@ -70,9 +70,9 @@
                 <source>label.title</source>
                 <target>Nazwa</target>
             </trans-unit>
-            <trans-unit id="message.add_category">
-                <source>message.add_category</source>
-                <target>Dodaj nową kategorię</target>
+            <trans-unit id="message.add_tag">
+                <source>message.add_tag</source>
+                <target>Dodaj nowy tag</target>
             </trans-unit>
             <trans-unit id="message.created_successfully">
                 <source>message.created_successfully</source>

@@ -111,19 +111,19 @@ class Transaction
     }
 
     /**
-     * @return int|null
+     * @return float|null
      */
-    public function getAmount(): ?int
+    public function getAmount(): ?float
     {
         return $this->amount;
     }
 
     /**
-     * @param int $amount
+     * @param float $amount
      *
      * @return Transaction
      */
-    public function setAmount(int $amount): self
+    public function setAmount(float $amount): self
     {
         $this->amount = $amount;
 
@@ -153,7 +153,7 @@ class Transaction
     /**
      * @return Collection|Tag[]
      */
-    public function getTags(): Collection
+    public function getTag(): Collection
     {
         return $this->tags;
     }

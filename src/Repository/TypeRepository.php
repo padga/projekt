@@ -1,8 +1,12 @@
 <?php
+/**
+ * Tag Repository.
+ */
 
 namespace App\Repository;
 
 use App\Entity\Type;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -14,37 +18,64 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TypeRepository extends ServiceEntityRepository
 {
+    /**
+     * CategoryRepository constructor.
+     *
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Type::class);
     }
 
-    // /**
-    //  * @return Type[] Returns an array of Type objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Query all records.
+     *
+     * @return QueryBuilder
+     */
+    public function queryAll(): QueryBuilder
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->getOrCreateQueryBuilder()
+            ->orderBy('t.updatedAt', 'DESC');
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Type
+    /**
+     * Save record.
+     *
+     * @param Type $type
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save(Type $type): void
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $this->_em->persist($type);
+        $this->_em->flush($type);
     }
-    */
+
+    /**
+     * Delete record.
+     *
+     * @param \App\Entity\Type $type Type entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Type $type): void
+    {
+        $this->_em->remove($type);
+        $this->_em->flush($type);
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param \Doctrine\ORM\QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?: $this->createQueryBuilder('t');
+    }
 }

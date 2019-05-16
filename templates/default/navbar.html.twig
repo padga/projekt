@@ -10,7 +10,7 @@
             <ul class="menu simple vertical medium-horizontal">
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li><a href="{{ url("dashboard")}}">{{ app.user.firstName }}</a></li>
-                <li><a href="#">Moje konto</a></li>
+                <li><a href="{{ url("user_edit", {id:app.user.id})}}">Moje konto</a></li>
 
                 <li><a href="#">Tagi</a></li>
                 <li><a href="#">News</a></li>

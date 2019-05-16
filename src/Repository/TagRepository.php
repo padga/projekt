@@ -6,6 +6,7 @@
 namespace App\Repository;
 
 use App\Entity\Tag;
+use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -37,6 +38,25 @@ class TagRepository extends ServiceEntityRepository
     {
         return $this->getOrCreateQueryBuilder()
             ->orderBy('t.updatedAt', 'DESC');
+    }
+
+    /**
+     * Query tasks by author.
+     *
+     * @param \App\Entity\User|null $user User entity
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    public function queryByAuthor(User $user = null): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll();
+
+        if (!is_null($user)) {
+            $queryBuilder->andWhere('t.owner = :owner')
+                ->setParameter('owner', $user);
+        }
+
+        return $queryBuilder;
     }
 
     /**

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.type_new'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1> {{ 'title.type_new'|trans }} </h1>
+    {% include 'default/_form.html.twig' with {
+        page_title: 'title.type_new',
+        attr: {
+            method: 'post',
+            action: url('type_new')
+        },
+    } %}
+
+{% endblock %}

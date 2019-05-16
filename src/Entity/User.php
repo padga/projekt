@@ -63,12 +63,15 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\Email
+     * @Assert\Email()
+     * @Assert\NotBlank()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $password;
 
@@ -79,6 +82,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $firstName;
 
@@ -311,6 +316,11 @@ class User implements UserInterface
         return $this->tags;
     }
 
+    /**
+     * @param Tag $tag
+     *
+     * @return User
+     */
     public function addTag(Tag $tag): self
     {
         if (!$this->tags->contains($tag)) {
@@ -321,6 +331,11 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @param Tag $tag
+     *
+     * @return User
+     */
     public function removeTag(Tag $tag): self
     {
         if ($this->tags->contains($tag)) {

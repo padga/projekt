@@ -38,29 +38,29 @@
                 <source>label.first_name</source>
                 <target>First name</target>
             </trans-unit>
-            <trans-unit id="title.category_new">
-                <source>title.category_new</source>
-                <target>Dodaj karegorię</target>
+            <trans-unit id="title.tag_new">
+                <source>title.tag_new</source>
+                <target>Add a new tag</target>
             </trans-unit>
-            <trans-unit id="label.category_name">
-                <source>label.category_name</source>
-                <target>Nazwa kategorii</target>
+            <trans-unit id="label.tag_name">
+                <source>label.tag_name</source>
+                <target>Tag name</target>
             </trans-unit>
             <trans-unit id="message.not_empty">
                 <source>message.not_empty</source>
                 <target>This field cannot be empty!</target>
             </trans-unit>
-            <trans-unit id="message.category_created_successfully">
-                <source>message.category_created_successfully</source>
-                <target>Category added successfully!</target>
+            <trans-unit id="message.tag_created_successfully">
+                <source>message.tag_created_successfully</source>
+                <target>Tag added successfully!</target>
             </trans-unit>
-            <trans-unit id="message.add_category">
-                <source>message.add_category</source>
-                <target>Add new category</target>
+            <trans-unit id="message.add_tag">
+                <source>message.add_tag</source>
+                <target>Add new tag</target>
             </trans-unit>
             <trans-unit id="message.created_successfully">
                 <source>message.created_successfully</source>
-                <target>Registered successfully!</target>
+                <target>Success!</target>
             </trans-unit>
             <trans-unit id="message.add_user">
                 <source>message.add_user</source>
