@@ -8,6 +8,7 @@ namespace App\Form;
 use App\Entity\Tag;
 use App\Entity\Transaction;
 use App\Entity\Type;
+use App\Entity\User;
 use App\Repository\TagRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -16,7 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class TransactionType
+ * Class TransactionType.
  */
 class TransactionType extends AbstractType
 {
@@ -45,17 +46,22 @@ class TransactionType extends AbstractType
             'type',
             EntityType::class,
             [
+                'label' => 'label.type',
                 'class' => Type::class,
                 'choice_label' => 'typeTitle',
                     'required' => true,
             ]
         );
-
+        $user = $options['user'];
         $builder->add(
             'tag',
             EntityType::class,
             [
+                'label' => 'label.tags',
                 'class' => Tag::class,
+                'query_builder' => function (TagRepository $repository) use ($user) {
+                    return $repository->queryByAuthor($user);
+                },
                 'choice_label' => 'tagName',
                 'required' => true,
             ]
@@ -70,6 +76,8 @@ class TransactionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => Transaction::class]);
+        $resolver->setRequired('user');
+        $resolver->setAllowedTypes('user', array(User::class, 'int'));
     }
 
     /**

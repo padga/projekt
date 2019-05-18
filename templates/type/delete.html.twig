@@ -2,18 +2,18 @@
 
 
 {% block title %}
-    {{ 'title.tag_delete'|trans({'%id%': tag.id|default('')}) }}
+    {{ 'title.type_delete'|trans({'%id%': type.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
     {% include 'default/_form.html.twig' with {
-        page_title: 'title.category_delete',
-        page_title_param: {'%id%': tag.id},
+        page_title: 'title.type_delete',
+        page_title_param: {'%id%': type.id},
         attr: {
             method: 'delete',
-            action: url('tag_delete', {'id': tag.id}),
+            action: url('type_delete', {'id': type.id}),
         },
-        back_to_list_path: 'tag_index',
+        back_to_list_path: 'type_index',
     } %}
 {% endblock %}
 

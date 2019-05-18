@@ -137,7 +137,7 @@ class Tag
     /**
      * @return Collection|Transaction[]
      */
-    public function getTransactions(): Collection
+    public function getTransaction(): Collection
     {
         return $this->transactions;
     }

@@ -28,19 +28,28 @@ class TransactionController extends AbstractController
      *     "/add",
      *     name="transaction_add",
      * )
-     * @throws \Exception
+     *
+     * @param Request               $request
+     * @param TransactionRepository $repository
+     *
+     * @return Response
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function new(Request $request, TransactionRepository $repository): Response
     {
         $transaction = new Transaction();
-        $form = $this->createForm(TransactionType::class, $transaction);
+        $form = $this->createForm(TransactionType::class, $transaction, array(
+            'user' => $this->getUser(),
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $transaction->setCreatedAt(new \DateTime());
             $transaction->setUpdatedAt(new \DateTime());
             $transaction->setOwner($this->getUser());
-            $transaction->getTag();
+//            $transaction->getTag();
             $repository->save($transaction);
 
             $this->addFlash('success', 'message.created_successfully');
