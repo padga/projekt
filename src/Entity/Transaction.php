@@ -45,6 +45,7 @@ class Transaction
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="transactions")
+     * @ORM\JoinTable(name="transaction_tag")
      */
     private $tags;
 
@@ -166,8 +167,21 @@ class Transaction
     public function addTag(Tag $tag): self
     {
         if (!$this->tags->contains($tag)) {
+            $tag->addTransaction($this);
             $this->tags[] = $tag;
         }
+
+        return $this;
+    }
+
+    /**
+     * @param Tag|null $tag
+     *
+     * @return Transaction
+     */
+    public function setTag(?Tag $tag): self
+    {
+        $this->tag = $tag;
 
         return $this;
     }

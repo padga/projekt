@@ -6,7 +6,9 @@
 namespace App\Controller;
 
 use App\Entity\Transaction;
+use App\Entity\Tag;
 use App\Form\TransactionType;
+use App\Repository\TagRepository;
 use App\Repository\TransactionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,7 +51,6 @@ class TransactionController extends AbstractController
             $transaction->setCreatedAt(new \DateTime());
             $transaction->setUpdatedAt(new \DateTime());
             $transaction->setOwner($this->getUser());
-//            $transaction->getTag();
             $repository->save($transaction);
 
             $this->addFlash('success', 'message.created_successfully');

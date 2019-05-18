@@ -59,6 +59,11 @@ class TagRepository extends ServiceEntityRepository
         return $queryBuilder;
     }
 
+    public function findOneByTitle()
+    {
+
+    }
+
     /**
      * Save record.
      *
