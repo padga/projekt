@@ -1,5 +1,47 @@
 {% extends 'base.twig.html' %}
+{% block title %}
+    {{ 'title.incomes'|trans }}
+{% endblock %}
+
 
 {% block body %}
-    <h1>WOOOHOOO</h1>
+
+    <div class="navigation text-center">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 't.createdAt') }}</th>
+            <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 't.updatedAt') }}</th>
+            <th>{{ 'label.amount'|trans }}</th>
+            <th>{{ 'label.actions'|trans }}</th>
+            <th>{{ 'label.delete'|trans }}</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for transaction in pagination %}
+            <tr>
+                <td>{{ transaction.createdAt|localizeddate }}</td>
+                <td>{{ transaction.updatedAt|localizeddate }}</td>
+                <td>{{ transaction.tags }}</td>
+
+                <td>
+                    <a href="{{ url('user_edit', {id: user.id}) }}" title="{{ 'action.view'|trans }}">
+                        {{ 'action.view'|trans }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url('user_delete', {id: user.id}) }}" title="{{ 'action.delete'|trans }}">
+                        {{ 'action.delete'|trans }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
     {% endblock %}

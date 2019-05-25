@@ -74,6 +74,108 @@
                 <source>title.users_index</source>
                 <target>Users list</target>
             </trans-unit>
+            <trans-unit id="label.created_at">
+                <source>label.created_at</source>
+                <target>Created at</target>
+            </trans-unit>
+            <trans-unit id="label.updated_at">
+                <source>label.updated_at</source>
+                <target>Updated at</target>
+            </trans-unit>
+            <trans-unit id="label.actions">
+                <source>label.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="label.delete">
+                <source>label.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="action.view">
+                <source>action.view</source>
+                <target>View</target>
+            </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="title.user_delete">
+                <source>title.user_delete</source>
+                <target>Delete my account</target>
+            </trans-unit>
+            <trans-unit id="title.incomes">
+                <source>title.incomes</source>
+                <target>My incomes</target>
+            </trans-unit>
+            <trans-unit id="label.amount">
+                <source>label.amount</source>
+                <target>Amount</target>
+            </trans-unit>
+            <trans-unit id="title.user_edit">
+                <source>title.user_edit</source>
+                <target>Edit my data</target>
+            </trans-unit>
+            <trans-unit id="title.user_dashboard">
+                <source>title.user_dashboard</source>
+                <target>My dashboard</target>
+            </trans-unit>
+            <trans-unit id="title.tag_delete">
+                <source>title.tag_delete</source>
+                <target>Delete tag</target>
+            </trans-unit>
+            <trans-unit id="title.tag_list">
+                <source>title.tag_list</source>
+                <target>My tags</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="message.item_not_found">
+                <source>message.item_not_found</source>
+                <target>Item was not found</target>
+            </trans-unit>
+            <trans-unit id="title.tag_edit">
+                <source>title.tag_edit</source>
+                <target>Edit tag</target>
+            </trans-unit>
+            <trans-unit id="title.tags_index">
+                <source>title.tags_index</source>
+                <target>My tags</target>
+            </trans-unit>
+            <trans-unit id="label.tagName">
+                <source>label.tagName</source>
+                <target>Tag name</target>
+            </trans-unit>
+            <trans-unit id="title.expenses">
+                <source>title.expenses</source>
+                <target>My expenses</target>
+            </trans-unit>
+            <trans-unit id="label.expense">
+                <source>label.expenses</source>
+                <target>My expenses</target>
+            </trans-unit>
+            <trans-unit id="label.category">
+                <source>label.category</source>
+                <target>Category</target>
+            </trans-unit>
+            <trans-unit id="label.tags">
+                <source>label.tags</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="label.income">
+                <source>label.incomes</source>
+                <target>My incomes</target>
+            </trans-unit>
+            <trans-unit id="title.type_new">
+                <source>title.type_new</source>
+                <target>Add new type</target>
+            </trans-unit>
+            <trans-unit id="title.type_delete">
+                <source>title.type_delete</source>
+                <target>Delete type</target>
+            </trans-unit>
+
+
 
         </body>
     </file>

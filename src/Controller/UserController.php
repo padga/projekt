@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\ChangePasswordType;
 use App\Form\RegisterType;
+use App\Repository\TransactionRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -93,6 +94,7 @@ class UserController extends AbstractController
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Exception
      *
      * @Route(
      *     "/{id}/edit",
@@ -131,8 +133,8 @@ class UserController extends AbstractController
      * Delete action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Entity\Tag                           $tag        Tag entity
-     * @param \App\Repository\TagRepository             $repository Tag repository
+     * @param User                                      $user
+     * @param UserRepository                            $repository Tag repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -170,6 +172,33 @@ class UserController extends AbstractController
             [
                 'form' => $form->createView(),
                 'user' => $user,
+            ]
+        );
+    }
+
+    /**
+     * View action.
+     *
+     *
+     * @param TransactionRepository $repository
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @Route(
+     *     "/dashboard",
+     *     name="user_dashboard",
+     * )
+     */
+    public function view(TransactionRepository $repository): Response
+    {
+        $expense = $repository->countExpense($this->getUser());
+        $income = $repository->countIncome($this->getUser());
+
+        return $this->render(
+            'user/index.html.twig',
+            ['expense' => $expense,
+                'income' => $income,
             ]
         );
     }

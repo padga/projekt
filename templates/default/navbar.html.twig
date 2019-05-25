@@ -8,21 +8,19 @@
     <div id="topbar-responsive" class="topbar-responsive-links">
         <div class="top-bar-right">
             <ul class="menu simple vertical medium-horizontal">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') and is_granted('ROLE_ADMIN') %}
+                    <li><a href="#">Panel admina</a></li>
+                {% endif %}
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li><a href="{{ url("dashboard")}}">{{ app.user.firstName }}</a></li>
                 <li><a href="{{ url("user_edit", {id:app.user.id})}}">Moje konto</a></li>
 
-                <li><a href="#">Tagi</a></li>
-                <li><a href="#">News</a></li>
+                <li><a href="{{ url("tag_index")}}">Tagi</a></li>
+                <li><a href="{{ url("transaction_index")}}">Transakcje</a></li>
                 <li><a href="#">Contact</a></li>
                     <li><a href="{{ url('security_logout') }}">Wyloguj się</a></li>
                 {% endif %}
-                {#{% if is_granted('IS_AUTHENTICATED_REMEMBERED') and app.user.role =='ROLE_ADMIN' %}#}
-                    {#<li><a href="{{ url("dashboard")}}">{{ app.user.firstName }}</a></li>#}
-                    {#<li><a href="#">Moje konto</a></li>#}
-                    {#<li><a href="{{ url('security_logout') }}">Wyloguj się</a></li>#}
-                    {#<li><a href="#">Panel admina</a></li>#}
-                {#{% endif %}#}
+
                 {#<li>#}
                 {#<button type="button" class="button hollow topbar-responsive-button"><a href="{{ url("category_index")}}">Categories</a></button>#}
                 {#</li>#}

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'title.expenses'|trans }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="chart">
+        <h1>{{ 'label.expenses'|trans }} </h1>
+        <h3>Twoje wydatki wyniosły: {{ summary }} zł</h3>
+        <canvas id="myChart" width=30% height=7%></canvas>
+    </div>
+    {#{% set categoryArray=[] %}#}
+    {#{% set amountArray = [] %}#}
+
+    <div class="navigation text-center">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 't.createdAt') }}</th>
+            <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 't.updatedAt') }}</th>
+            <th>{{ 'label.amount'|trans }}</th>
+            <th>{{ 'label.category'|trans }}</th>
+            <th>{{ 'label.tags'|trans }}</th>
+            <th>{{ 'label.actions'|trans }}</th>
+            <th>{{ 'label.delete'|trans }}</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for transaction in pagination %}
+            <tr>
+                <td >{{ transaction.createdAt|localizeddate }}</td>
+                <td>{{ transaction.updatedAt|localizeddate }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.category.tagName }}
+                    {% if  transaction.category.tagName  not in categoryArray %}
+                        {% set categoryArray = categoryArray|merge([ transaction.category.tagName ]) %}
+                    {% endif %}
+                </td>
+                <td>
+                    <ul>
+                        {% for tag in transaction.tag  %}
+                            <li >{{ tag.tagName | join('\n') }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                {#<td>#}
+                {#<a href="{{ url('user_edit', {id: user.id}) }}" title="{{ 'action.view'|trans }}">#}
+                {#{{ 'action.view'|trans }}#}
+                {#</a>#}
+                {#</td>#}
+                {#<td>#}
+                {#<a href="{{ url('user_delete', {id: user.id}) }}" title="{{ 'action.delete'|trans }}">#}
+                {#{{ 'action.delete'|trans }}#}
+                {#</a>#}
+                {#</td>#}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% set tmp = 0 %}
+    {% for category in categoryArray %}
+        {% for transaction in pagination %}
+            {% if transaction.category.tagName == category %}
+                {%  set tmp = tmp + transaction.amount %}
+            {% endif %}
+        {% endfor %}
+        {% set amountArray = amountArray|merge([tmp]) %}
+        {% set tmp =0 %}
+    {% endfor %}
+
+
+
+    <script>
+        var categoryArray = {{ categoryArray|json_encode|raw }};
+        var amountArray= {{ amountArray|json_encode|raw }};
+    </script>
+
+{% endblock %}

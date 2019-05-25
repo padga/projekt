@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.transaction_index'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% if pagination is defined and pagination|length %}
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        {#{% if not tag.tasks|length %}#}
+        {#<a href="{{ url('category_delete', {id: tag.id}) }}" title="{{ 'action.delete'|trans }}">#}
+        {#{{ 'action.delete'|trans }}#}
+        {#</a>#}
+        {#{% endif %}#}
+        <a href="{{ url('transaction_add') }}">
+            <div class ="add-category-button">
+
+                {{ 'message.add_transaction'|trans }}
+            </div>
+        </a>
+        </a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 't.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 't.updatedAt') }}</th>
+                <th>{{ 'label.amount'|trans }}</th>
+                <th>{{ 'label.type'|trans }}</th>
+                <th>{{ 'label.category'|trans }}</th>
+                <th>{{ 'label.tags'|trans }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
+                <th>{{ 'label.delete'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for transaction in pagination %}
+                <tr>
+                    <td >{{ transaction.createdAt|localizeddate }}</td>
+                    <td>{{ transaction.updatedAt|localizeddate }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.type.typeTitle }}</td>
+                    <td>{{ transaction.category.tagName }}
+                    </td>
+                    <td>
+                        <ul>
+                            {% for tag in transaction.tag  %}
+                                <li >{{ tag.tagName | join('\n') }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="{{ url('transaction_edit', {id: transaction.id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ 'action.view'|trans }}
+                        </a>
+                    </td>
+                    {#<td>#}
+                        {#<a href="{{ url('tag_delete', {id: tag.id}) }}" title="{{ 'action.delete'|trans }}">#}
+                            {#{{ 'action.delete'|trans }}#}
+                        {#</a>#}
+                    {#</td>#}
+                </tr>
+                {#{% endif %}#}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% else %}
+        <p>
+            {{ 'message.empty_list'|trans }}
+        </p>
+        <a href="{{ url('transaction_new') }}">
+            <div class ="add-category-button">
+
+                {{ 'message.add_transaction'|trans }}
+            </div>
+        </a>
+    {% endif %}
+{% endblock %}

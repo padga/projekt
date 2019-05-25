@@ -56,6 +56,11 @@ class Transaction
     private $type;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tag")
+     */
+    private $category;
+
+    /**
      * Transaction constructor.
      */
     public function __construct()
@@ -216,6 +221,26 @@ class Transaction
     public function setType(?Type $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Tag|null
+     */
+    public function getCategory(): ?Tag
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Tag|null $category
+     *
+     * @return Transaction
+     */
+    public function setCategory(?Tag $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

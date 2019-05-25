@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    {{ 'title.transaction_edit'|trans({'%id%': transaction.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    {% include 'default/_form.html.twig' with {
+        page_title: 'title.transaction_edit',
+        page_title_param: {'%id%': transaction.id},
+        attr: {
+            method: 'PUT',
+            action: url('transaction_edit', {'id': transaction.id}),
+        },
+        back_to_list_path: 'transaction_index',
+    } %}
+{% endblock %}

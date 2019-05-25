@@ -5,6 +5,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Tag;
 use App\Entity\Transaction;
 use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
@@ -85,6 +86,74 @@ class TransactionRepository extends ServiceEntityRepository
     {
         $this->_em->remove($tag);
         $this->_em->flush($tag);
+    }
+
+    /**
+     * Gets income of a User.
+     *
+     * @param User $user
+     *
+     * @return QueryBuilder
+     */
+    public function queryIncome(User $user): QueryBuilder
+    {
+        $queryBuilder = $this->queryByAuthor($user);
+        if (!is_null($user)) {
+            $queryBuilder->andWhere('t.type = :type')
+                ->setParameter('type', 2);
+        }
+
+        return $queryBuilder;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return mixed
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countIncome(User $user)
+    {
+        $queryBuilder = $this->queryIncome($user);
+
+        return $queryBuilder->select('SUM(t.amount) AS summary')
+                ->getQuery()
+                ->getSingleScalarResult();
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return mixed
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countExpense(User $user)
+    {
+        $queryBuilder = $this->queryExpense($user);
+
+        return $queryBuilder->select('SUM(t.amount) AS summary')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Gets expense of a User.
+     *
+     * @param User $user
+     *
+     * @return QueryBuilder
+     */
+    public function queryExpense(User $user): QueryBuilder
+    {
+        $queryBuilder = $this->queryByAuthor($user);
+        if (!is_null($user)) {
+            $queryBuilder->andWhere('t.type = :type')
+                ->setParameter('type', 1);
+        }
+
+        return $queryBuilder;
     }
 
     /**

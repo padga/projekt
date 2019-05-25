@@ -20,15 +20,18 @@
 {% block body %}
 {% endblock %}
 {#</div>#}
-<footer class="mobile-bottom-bar">
-<p class='footer-text'> ©Patrycja Nowak. Projekt zaliczeniowy ZTP</p>
-</footer>
+{#<footer class="mobile-bottom-bar">#}
+{#<p class='footer-text'> ©Patrycja Nowak. Projekt zaliczeniowy ZTP</p>#}
+{#</footer>#}
 {% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.4/randomColor.min.js.map"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
     <script src="{{ asset("js/vendor/jquery.js")}}"></script>
     <script src="{{ asset("js/vendor/what-input.js")}}"></script>
     <script src="{{ asset("js/vendor/foundation.js")}}"></script>
     <script src="{{ asset("js/app.js")}}"></script>
+    <script src="{{ asset("js/chart.js")}}"></script>
+    <script src="{{ asset("js/GeneralChart.js")}}"></script>
 {% endblock %}
 </body>
 </html>

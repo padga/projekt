@@ -2,16 +2,23 @@
 
 {% block title %}
 
-    {{ 'title.user_index'|trans }}
+    {{ 'title.user_dashboard'|trans }}
 
 {% endblock %}
 
 {% block body %}
+    <h2>Dashboard</h2>
+    <h1>Tutaj będzie wykres ogólny</h1>
+    <canvas id="generalChart" width=30% height=7%></canvas>
+    <p>Twoje wydatki wyniosły {{ expense }}</p>
+    <p>Twoje przychody wyniosły {{ income }}</p>
+    {% set result= income - expense %}
+    <h1>Twoje saldo wynosi {{ result }}</h1>
 
-    <canvas id="myChart">
-        <script src="{{ asset("js/chart.js")}}"></script>
-    </canvas>
+<script>
+        var expense = {{ expense|json_encode|raw }};
+        var income = {{ income|json_encode|raw }};
 
-{% endblock %}
+</script>
 
 {% endblock %}

@@ -53,6 +53,21 @@ class TransactionType extends AbstractType
             ]
         );
         $user = $options['user'];
+
+        $builder->add(
+            'category',
+            EntityType::class,
+            [
+                'label' => 'label.category',
+                'class' => Tag::class,
+                'query_builder' => function (TagRepository $repository) use ($user) {
+                    return $repository->queryByAuthor($user);
+                },
+                'choice_label' => 'tagName',
+                'required' => true,
+            ]
+        );
+
         $builder->add(
             'tag',
             EntityType::class,
@@ -68,22 +83,6 @@ class TransactionType extends AbstractType
                 'multiple' => true,
             ]
         );
-//        $user = $options['user'];
-//        $builder->add(
-//            'tags',
-//            EntityType::class,
-//            [
-//                'class' => Tag::class,
-//                'choice_label' => function (TagRepository $repository) use ($user) {
-//                    return $repository->queryByAuthor($user);
-//                },
-//                'label' => 'label.tags',
-//                'placeholder' => 'label.none',
-//                'required' => false,
-//                'expanded' => true,
-//                'multiple' => true,
-//            ]
-//        );
     }
 
     /**
