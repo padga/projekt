@@ -9,6 +9,7 @@ use App\Entity\Transaction;
 use App\Form\TransactionType;
 use App\Repository\TransactionRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -103,6 +104,7 @@ class TransactionController extends AbstractController
      * @return Response
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
+     *
      */
     public function showIncomes(TransactionRepository $repository, PaginatorInterface $paginator): Response
     {
@@ -139,6 +141,11 @@ class TransactionController extends AbstractController
      * @return Response
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
+     *
+     *      * @IsGranted(
+     *     "MANAGE",
+     *     subject="transaction",
+     * )
      */
     public function showExpenses(TransactionRepository $repository, PaginatorInterface $paginator): Response
     {
@@ -181,9 +188,15 @@ class TransactionController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="transaction_edit",
      * )
+     *
+     * @IsGranted(
+     *     "MANAGE",
+     *     subject="transaction",
+     * )
      */
     public function edit(Request $request, Transaction $transaction, TransactionRepository $repository): Response
     {
+
         $form = $this->createForm(TransactionType::class, $transaction, array(
             'user' => $this->getUser(),
             'method' => 'put',

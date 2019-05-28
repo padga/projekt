@@ -8,10 +8,10 @@
     <div class="chart">
         <h1>{{ 'label.incomes'|trans }} </h1>
         <h3>Twoje przychody wyniosły: {{ summary }} zł</h3>
-        <canvas id="myChart" width=30% height=7%></canvas>
+        <canvas id="myChart" width=30% height=10%></canvas>
     </div>
-    {#{% set categoryArray=[] %}#}
-    {#{% set amountArray = [] %}#}
+    {% set categoryArray=[] %}
+    {% set amountArray = [] %}
 
     <div class="navigation text-center">
         {{ knp_pagination_render(pagination) }}
@@ -39,7 +39,7 @@
                 <td>{{ transaction.amount }}</td>
                 <td>{{ transaction.category.tagName }}
                     {% if  transaction.category.tagName  not in categoryArray %}
-                    {% set categoryArray = categoryArray|merge([ transaction.category.tagName ]) %}
+                    {% set categoryArray = categoryArray|merge([transaction.category.tagName]) %}
                     {% endif %}
                 </td>
                 <td>

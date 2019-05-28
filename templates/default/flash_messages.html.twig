@@ -15,6 +15,7 @@
                 <span aria-hidden="true">&CircleTimes;</span>
             </button>
         </div>
+    {% endfor %}
         {% for message in app.flashes('warning') %}
             <div data-closable class="alert-box callout warning">
                 <i class="fa fa-exclamation-triangle"></i> {{ message|trans }}
@@ -22,6 +23,6 @@
                     <span aria-hidden="true">&CircleTimes;</span>
                 </button>
             </div>
-        {% endfor %}
+
     {% endfor %}
 {% endif %}

@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Form\TagType;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Tag;
 use Symfony\Component\Routing\Annotation\Route;
@@ -60,6 +61,9 @@ class TagController extends AbstractController
      *     name="tag_view",
      *     requirements={"id": "[1-9]\d*"},
      * )
+     *      *      *      * @IsGranted(
+     *     "MANAGE",
+     *     subject="tag",
      */
     public function view(Tag $tag): Response
     {
@@ -129,9 +133,19 @@ class TagController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="tag_edit",
      * )
+     *
+     *      *      * @IsGranted(
+     *     "MANAGE",
+     *     subject="tag",
+     * )
      */
     public function edit(Request $request, Tag $tag, TagRepository $repository): Response
     {
+        if ($tag->getOwner() !== $this->getUser()) {
+            $this->addFlash('warning', 'message.item_not_found');
+
+            return $this->redirectToRoute('tag_index');
+        }
         $form = $this->createForm(TagType::class, $tag, ['method' => 'put']);
         $form->handleRequest($request);
 
@@ -157,8 +171,8 @@ class TagController extends AbstractController
      * Delete action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Entity\Tag                      $tag   Tag entity
-     * @param \App\Repository\TagRepository        $repository Tag repository
+     * @param \App\Entity\Tag                           $tag        Tag entity
+     * @param \App\Repository\TagRepository             $repository Tag repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -171,6 +185,9 @@ class TagController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="tag_delete",
      * )
+     *      *      *      * @IsGranted(
+     *     "MANAGE",
+     *     subject="tag",
      */
     public function delete(Request $request, Tag $tag, TagRepository $repository): Response
     {

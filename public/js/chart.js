@@ -33,7 +33,6 @@ let myChart = new Chart(ctx, {
     },
     options: {
         responsive: true,
-        // onClick: graphClickEvent,
         layout: {
             padding: {
                 left: 0,
