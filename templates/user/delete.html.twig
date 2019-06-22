@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block body %}
+<div id="container">
+    <h3>Czy na pewno chcesz usunąć swoje konto?</h3>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.user_delete',
         page_title_param: {'%id%': user.id},
@@ -15,5 +17,6 @@
         },
         back_to_list_path: 'dashboard',
     } %}
+</div>
 {% endblock %}
 

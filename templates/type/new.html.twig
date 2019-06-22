@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block body %}
+    <div id="container">
+
     <h1> {{ 'title.type_new'|trans }} </h1>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.type_new',
@@ -13,5 +15,5 @@
             action: url('type_new')
         },
     } %}
-
+    </div>
 {% endblock %}

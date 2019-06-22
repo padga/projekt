@@ -30,6 +30,13 @@
 
         </thead>
 
+        <a href="{{ url('transaction_add') }}">
+            <div class ="add-category-button">
+
+                {{ 'message.add_transaction'|trans }}
+            </div>
+        </a>
+
         <tbody>
 
         {% for transaction in pagination %}
@@ -49,16 +56,16 @@
                         {% endfor %}
                     </ul>
                 </td>
-                {#<td>#}
-                {#<a href="{{ url('user_edit', {id: user.id}) }}" title="{{ 'action.view'|trans }}">#}
-                {#{{ 'action.view'|trans }}#}
-                {#</a>#}
-                {#</td>#}
-                {#<td>#}
-                {#<a href="{{ url('user_delete', {id: user.id}) }}" title="{{ 'action.delete'|trans }}">#}
-                {#{{ 'action.delete'|trans }}#}
-                {#</a>#}
-                {#</td>#}
+                <td>
+                    <a href="{{ url('transaction_edit', {id: transaction.id}) }}" title="{{ 'action.view'|trans }}">
+                        {{ 'action.view'|trans }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url('transaction_delete', {id: transaction.id}) }}" title="{{ 'action.delete'|trans }}">
+                        {{ 'action.delete'|trans }}
+                    </a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

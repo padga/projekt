@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block body %}
+    <div id="container">
+        <h2>Czy chcesz usunąć typ?</h2>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.type_delete',
         page_title_param: {'%id%': type.id},
@@ -15,5 +17,6 @@
         },
         back_to_list_path: 'type_index',
     } %}
+    </div>
 {% endblock %}
 

@@ -27,7 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  *
- * @UniqueEntity(fields={"email"})
+ * @UniqueEntity(fields={"email"}, message="message.email_already_taken")
  */
 class User implements UserInterface
 {
@@ -72,6 +72,13 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min = 5,
+     *     max = 255,
+     *     minMessage="message.password_too_short",
+     *     maxMessage="message.password_too_long"
+     *
+     * )
      */
     private $password;
 

@@ -38,6 +38,7 @@ class RegisterType extends AbstractType
             [
                 'label' => 'label.email',
                 'required' => true,
+                'invalid_message' => 'message.invalid.email',
                 'attr' => ['max_length' => 255],
             ]
         );
@@ -46,11 +47,14 @@ class RegisterType extends AbstractType
             RepeatedType::class,
             [
                 'type' => PasswordType::class,
-                'invalid_message' => 'message.invalid.passwords.',
+                'invalid_message' => 'message.invalid.passwords',
                 'first_options' => ['label' => 'label.password'],
                 'second_options' => ['label' => 'label.repeat.password'],
                 'required' => true,
-                'attr' => ['max_length' => 255],
+                'attr' => ['max_length' => 255,
+                            'min_length' => 5,
+
+                    ],
             ]
         );
 

@@ -12,12 +12,14 @@
         {#{{ 'action.delete'|trans }}#}
         {#</a>#}
         {#{% endif %}#}
-<a href="{{ url('auth_register') }}">
+
+<a class="space" href="{{ url('admin_register') }}">
     <div class ="add-category-button">
 
         {{ 'message.add_user'|trans }}
     </div>
 </a>
+
 <table class="table table-striped">
     <thead>
     <tr>
@@ -25,8 +27,10 @@
         <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 't.createdAt') }}</th>
         <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 't.updatedAt') }}</th>
         <th>{{ 'label.first_name'|trans }}</th>
+        <th>{{ 'label.role'|trans }}</th>
         <th>{{ 'label.actions'|trans }}</th>
         <th>{{ 'label.delete'|trans }}</th>
+
     </tr>
 
     </thead>
@@ -39,9 +43,16 @@
             <td>{{ user.createdAt|localizeddate }}</td>
             <td>{{ user.updatedAt|localizeddate }}</td>
             <td>{{ user.firstName }}</td>
+            <td>
+                <ul>
+                    {% for role in user.roles  %}
+                        <li >{{ role | join('\n') }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
 
             <td>
-                <a href="{{ url('user_edit', {id: user.id}) }}" title="{{ 'action.view'|trans }}">
+                <a href="{{ url('admin_manage', {id: user.id}) }}" title="{{ 'action.view'|trans }}">
                     {{ 'action.view'|trans }}
                 </a>
             </td>

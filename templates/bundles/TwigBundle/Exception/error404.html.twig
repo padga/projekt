@@ -1,0 +1,9 @@
+{% extends 'bse.html.twig' %}
+{% block body %}
+    <h1> Taka strona nie istnieje.</h1>
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+   <a href="{{ url('user_dashboard') }}"><h2> Wróć do strony głównej.</h2></a>
+        {% else %}
+            <a href="{{ url('dashboard') }}"><h2> Wróć do strony głównej.</h2></a>
+    {% endif %}
+{% endblock %}

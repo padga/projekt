@@ -10,11 +10,14 @@ use App\Form\ChangePasswordType;
 use App\Form\RegisterType;
 use App\Repository\TransactionRepository;
 use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class UserController.
@@ -102,6 +105,10 @@ class UserController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="user_edit",
      * )
+     *
+     *      *     * @IsGranted(
+     *     "MANAGE",
+     *     subject="user",)
      */
     public function edit(Request $request, User $user, UserRepository $repository, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -150,19 +157,17 @@ class UserController extends AbstractController
      */
     public function delete(Request $request, User $user, UserRepository $repository): Response
     {
-//        if ($tag->getTasks()->count()) {
-//            $this->addFlash('warning', 'message.category_contains_tasks');
-//
-//            return $this->redirectToRoute('category_index');
-//        }
-
-        $form = $this->createForm(RegisterType::class, $user, ['method' => 'DELETE']);
+        $form = $this->createForm(FormType::class, $user, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
         if ($request->isMethod('DELETE')) {
             $repository->delete($user);
 
+            $session = new Session();
+            $session->invalidate();
+
             $this->addFlash('success', 'message.deleted_successfully');
+
 
             return $this->redirectToRoute('dashboard');
         }
@@ -185,6 +190,7 @@ class UserController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
+     *
      * @Route(
      *     "/dashboard",
      *     name="user_dashboard",

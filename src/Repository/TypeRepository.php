@@ -11,6 +11,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
+ * Type repository.
  * @method Type|null find($id, $lockMode = null, $lockVersion = null)
  * @method Type|null findOneBy(array $criteria, array $orderBy = null)
  * @method Type[]    findAll()

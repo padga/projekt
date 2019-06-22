@@ -5,7 +5,6 @@
 
 namespace App\Repository;
 
-use App\Entity\Tag;
 use App\Entity\Transaction;
 use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
@@ -47,14 +46,19 @@ class TransactionRepository extends ServiceEntityRepository
      * @param \App\Entity\User|null $user User entity
      *
      * @return \Doctrine\ORM\QueryBuilder Query builder
+     *
+     * @throws \Exception
      */
     public function queryByAuthor(User $user = null): QueryBuilder
     {
         $queryBuilder = $this->queryAll();
-
+        $time = new \DateTime('now');
+        $time->modify('-1 month');
         if (!is_null($user)) {
             $queryBuilder->andWhere('t.owner = :owner')
-                ->setParameter('owner', $user);
+                ->setParameter('owner', $user)
+                ->andWhere('t.createdAt > :time')
+                ->setParameter('time', $time);
         }
 
         return $queryBuilder;
@@ -94,24 +98,33 @@ class TransactionRepository extends ServiceEntityRepository
      * @param User $user
      *
      * @return QueryBuilder
+     *
+     * @throws \Exception
      */
     public function queryIncome(User $user): QueryBuilder
     {
+        $time = new \DateTime('now');
+        $time->modify('-1 month');
         $queryBuilder = $this->queryByAuthor($user);
         if (!is_null($user)) {
             $queryBuilder->andWhere('t.type = :type')
-                ->setParameter('type', 2);
+                ->setParameter('type', 2)
+                ->andWhere('t.createdAt > :time')
+                ->setParameter('time', $time);
         }
 
         return $queryBuilder;
     }
 
     /**
+     * Query monthly income.
+     *
      * @param User $user
      *
      * @return mixed
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Exception
      */
     public function countIncome(User $user)
     {
@@ -123,11 +136,13 @@ class TransactionRepository extends ServiceEntityRepository
     }
 
     /**
+     * Counts expenses.
      * @param User $user
      *
      * @return mixed
      *
      * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Exception
      */
     public function countExpense(User $user)
     {
@@ -144,13 +159,19 @@ class TransactionRepository extends ServiceEntityRepository
      * @param User $user
      *
      * @return QueryBuilder
+     *
+     * @throws \Exception
      */
     public function queryExpense(User $user): QueryBuilder
     {
+        $time = new \DateTime('now');
+        $time->modify('-1 month');
         $queryBuilder = $this->queryByAuthor($user);
         if (!is_null($user)) {
             $queryBuilder->andWhere('t.type = :type')
-                ->setParameter('type', 1);
+                ->setParameter('type', 1)
+            ->andWhere('t.createdAt > :time')
+                ->setParameter('time', $time);
         }
 
         return $queryBuilder;

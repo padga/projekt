@@ -15,13 +15,13 @@
         {#{{ 'action.delete'|trans }}#}
         {#</a>#}
         {#{% endif %}#}
-        <a href="{{ url('transaction_add') }}">
+        <a class="space" href="{{ url('transaction_add') }}">
             <div class ="add-category-button">
 
                 {{ 'message.add_transaction'|trans }}
             </div>
         </a>
-        </a>
+
         <table class="table table-striped">
             <thead>
             <tr>
@@ -56,11 +56,11 @@
                             {{ 'action.view'|trans }}
                         </a>
                     </td>
-                    {#<td>#}
-                        {#<a href="{{ url('tag_delete', {id: tag.id}) }}" title="{{ 'action.delete'|trans }}">#}
-                            {#{{ 'action.delete'|trans }}#}
-                        {#</a>#}
-                    {#</td>#}
+                    <td>
+                        <a href="{{ url('transaction_delete', {id: transaction.id}) }}" title="{{ 'action.delete'|trans }}">
+                            {{ 'action.delete'|trans }}
+                        </a>
+                    </td>
                 </tr>
                 {#{% endif %}#}
             {% endfor %}
@@ -75,7 +75,7 @@
         <p>
             {{ 'message.empty_list'|trans }}
         </p>
-        <a href="{{ url('transaction_new') }}">
+        <a href="{{ url('transaction_add') }}">
             <div class ="add-category-button">
 
                 {{ 'message.add_transaction'|trans }}

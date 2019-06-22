@@ -20,7 +20,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     )
  * }
  *     )
- *@UniqueEntity(fields={"tagName"})
+ *@UniqueEntity(fields={"tagName", "owner"})
 
  */
 class Tag
@@ -137,7 +137,7 @@ class Tag
     /**
      * @return Collection|Transaction[]
      */
-    public function getTransaction(): Collection
+    public function getTransactions(): Collection
     {
         return $this->transactions;
     }

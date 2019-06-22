@@ -6,8 +6,10 @@
 {% endblock %}
 
 {% block body %}
+    <div id="container">
+        <h2>Czy chcesz usunąć ten tag?</h2>
     {% include 'default/_form.html.twig' with {
-        page_title: 'title.category_delete',
+        page_title: 'title.tag_delete',
         page_title_param: {'%id%': tag.id},
         attr: {
             method: 'delete',
@@ -15,5 +17,6 @@
         },
         back_to_list_path: 'tag_index',
     } %}
+    </div>
 {% endblock %}
 

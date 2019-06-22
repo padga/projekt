@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    {{ 'title.email_edit'|trans({'%id%': user.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    {% include 'default/_form.html.twig' with {
+        page_title: 'title.email_edit',
+        page_title_param: {'%id%': user.id},
+        attr: {
+            method: 'PUT',
+            action: url('email_edit', {'id': user.id}),
+        },
+        back_to_list_path: 'users_index',
+    } %}
+{% endblock %}

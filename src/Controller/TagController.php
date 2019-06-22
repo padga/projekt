@@ -10,6 +10,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Tag;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,8 @@ use App\Repository\TagRepository;
  * Class TagController.
  *
  * @Route("/tags")
+ *
+ * @IsGranted("ROLE_USER")
  */
 class TagController extends AbstractController
 {
@@ -61,9 +64,6 @@ class TagController extends AbstractController
      *     name="tag_view",
      *     requirements={"id": "[1-9]\d*"},
      * )
-     *      *      *      * @IsGranted(
-     *     "MANAGE",
-     *     subject="tag",
      */
     public function view(Tag $tag): Response
     {
@@ -94,16 +94,16 @@ class TagController extends AbstractController
     public function new(Request $request, TagRepository $repository): Response
     {
         $tag = new Tag();
+        $tag->setOwner($this->getUser());
         $form = $this->createForm(TagType::class, $tag);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $tag->setCreatedAt(new \DateTime());
             $tag->setUpdatedAt(new \DateTime());
-            $tag->setOwner($this->getUser());
             $repository->save($tag);
 
-            $this->addFlash('success', 'message.created_successfully');
+            $this->addFlash('success', 'message.tag_created_successfully');
 
             return $this->redirectToRoute('tag_index');
         }
@@ -141,11 +141,6 @@ class TagController extends AbstractController
      */
     public function edit(Request $request, Tag $tag, TagRepository $repository): Response
     {
-        if ($tag->getOwner() !== $this->getUser()) {
-            $this->addFlash('warning', 'message.item_not_found');
-
-            return $this->redirectToRoute('tag_index');
-        }
         $form = $this->createForm(TagType::class, $tag, ['method' => 'put']);
         $form->handleRequest($request);
 
@@ -185,19 +180,21 @@ class TagController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="tag_delete",
      * )
-     *      *      *      * @IsGranted(
+     *
+     * @IsGranted(
      *     "MANAGE",
      *     subject="tag",
+     * )
      */
     public function delete(Request $request, Tag $tag, TagRepository $repository): Response
     {
-//        if ($tag->getTasks()->count()) {
-//            $this->addFlash('warning', 'message.category_contains_tasks');
-//
-//            return $this->redirectToRoute('category_index');
-//        }
+        if ($tag->getTransactions()->count()) {
+            $this->addFlash('warning', 'message.tag_contains_transactions');
 
-        $form = $this->createForm(TagType::class, $tag, ['method' => 'DELETE']);
+            return $this->redirectToRoute('tag_index');
+        }
+
+        $form = $this->createForm(FormType::class, $tag, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
         if ($request->isMethod('DELETE')) {

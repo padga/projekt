@@ -15,10 +15,10 @@
         {#{{ 'action.delete'|trans }}#}
         {#</a>#}
         {#{% endif %}#}
-        <a href="{{ url('tag_new') }}">
+        <a class="space" href="{{ url('type_new') }}">
         <div class ="add-category-button">
 
-           {{ 'message.add_tag'|trans }}
+           {{ 'message.add_type'|trans }}
         </div>
         </a>
         <table class="table table-striped">
@@ -30,26 +30,31 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.tagName'|trans, 't.title') }}</th>
 
                 <th>{{ 'label.actions'|trans }}</th>
+                <th>{{ 'label.delete'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for tag in pagination %}
+            {% for type in pagination %}
                 {#{% if tag.owner == user %}#}
                 <tr>
-                    <td>{{ tag.id }}</td>
-                    <td>{{ tag.createdAt|localizeddate }}</td>
-                    <td>{{ tag.updatedAt|localizeddate }}</td>
-                    <td>{{ tag.tagName }}</td>
+                    <td>{{ type.id }}</td>
+                    <td>{{ type.createdAt|localizeddate }}</td>
+                    <td>{{ type.updatedAt|localizeddate }}</td>
+                    <td>{{ type.typeTitle }}</td>
 
                     <td>
-                        <a href="{{ url('tag_view', {id: tag.id}) }}" title="{{ 'action.view'|trans }}">
+                        <a href="{{ url('type_edit', {id: type.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
                         </a>
                     </td>
                     <td>
-                        <a href="{{ url('tag_delete', {id: tag.id}) }}" title="{{ 'action.delete'|trans }}">
-                            {{ 'action.delete'|trans }}
-                        </a>
+                        {% if not type.transactions|length %}
+                            <a href="{{ url('type_delete', {id: type.id}) }}" title="{{ 'action.delete'|trans }}">
+                                {{ 'action.delete'|trans }}
+                            </a>
+                        {% else %}
+                            <p>Nie możesz usunąć tego tagu.</p>
+                        {% endif %}
                     </td>
                 </tr>
                 {#{% endif %}#}

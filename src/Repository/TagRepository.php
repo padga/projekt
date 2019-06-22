@@ -12,6 +12,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
+ * Tag repository.
  * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
  * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
  * @method Tag[]    findAll()
@@ -57,11 +58,6 @@ class TagRepository extends ServiceEntityRepository
         }
 
         return $queryBuilder;
-    }
-
-    public function findOneByTitle()
-    {
-
     }
 
     /**

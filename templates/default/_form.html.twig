@@ -5,6 +5,12 @@
 {% block body %}
 
     {{ form_start(form, { method: attr.method|default('post'), action: attr.action }) }}
+    {#{{ form_errors(form) }}#}
+    {#<ul>#}
+        {#{% for error in form_errors(form)%}#}
+            {#<li>{{ error.message|trans }}</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
     {% if false == form.vars.valid %}
         {% include 'default/flash_messages.html.twig'%}
     {% endif %}

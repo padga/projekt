@@ -6,7 +6,7 @@ var generalChart = new Chart(general, {
 
     // The data for our dataset
     data: {
-        labels: ['incomes', 'expenses'], //tu muszą iść tagi
+        labels: [tincome, texpense], //tu muszą iść tagi
         datasets: [{
             label: 'General',
             backgroundColor: [ 'rgba(255, 99, 132, 0.2)',

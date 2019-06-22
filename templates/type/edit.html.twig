@@ -2,17 +2,20 @@
 
 
 {% block title %}
-    {{ 'title.tag_edit'|trans({'%id%': tag.id|default('')}) }}
+    {{ 'title.type_edit'|trans({'%id%': type.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
+    <div id="container">
+        <h2>Edytuj typ</h2>
     {% include 'default/_form.html.twig' with {
-        page_title: 'title.tag_edit',
-        page_title_param: {'%id%': tag.id},
+        page_title: 'title.type_edit',
+        page_title_param: {'%id%': type.id},
         attr: {
             method: 'PUT',
-            action: url('tag_edit', {'id': tag.id}),
+            action: url('type_edit', {'id': type.id}),
         },
-        back_to_list_path: 'tag_index',
+        back_to_list_path: 'type_index',
     } %}
+    </div>
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'title.users_index'|trans }}
+{% endblock %}
+
+{% block body %}
+        <h1> Co chcesz zrobić?</h1>
+
+    <a href="{{ url('users_index') }}">
+        <div class ="add-category-button">
+
+            {{ 'message.manage_users'|trans }}
+        </div>
+    </a>
+
+    <a href="{{ url('type_index') }}">
+        <div class ="add-category-button">
+
+            {{ 'message.manage_types'|trans }}
+        </div>
+    </a>
+
+    {#</div>#}
+{% endblock %}

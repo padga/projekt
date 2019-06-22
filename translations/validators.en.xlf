@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="message.invalid.passwords">
+                <source>message.invalid.passwords</source>
+                <target>Passwords must match!</target>
+            </trans-unit>
+            <trans-unit id="message.password_too_short">
+                <source>message.password_too_short</source>
+                <target>Password should have at least 5 characters.</target>
+            </trans-unit>
+            <trans-unit id="message.password_too_long">
+                <source>message.password_too_long</source>
+                <target>Password should have max 255 characters.</target>
+            </trans-unit>
+            <trans-unit id="message.invalid.email">
+                <source>message.invalid.email</source>
+                <target>This email is invalid.</target>
+            </trans-unit>
+            <trans-unit id="message.email_already_taken">
+                <source>message.email_already_taken</source>
+                <target>This email is already taken.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

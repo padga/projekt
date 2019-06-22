@@ -24,12 +24,12 @@ security:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
 
-#                 redirect anonymous users to the login page
-#                entry_point: App\Security\LoginFormAuthenticator
+                # redirect anonymous users to the login page
+                entry_point: App\Security\LoginFormAuthenticator
 
             logout:
                 path: security_logout
-                target: /
+                target: dashboard
 
             switch_user: false
             logout_on_user_change: true
@@ -45,7 +45,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-#        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
-#        - { path: ^/, roles: ROLE_USER}
+         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+         - { path: ^/user, roles: ROLE_USER}
+         - { path: ^/transaction, roles: ROLE_USER}
+         - { path: ^/tags, roles: ROLE_USER}
+         - { path: ^/type, roles: ROLE_ADMIN}

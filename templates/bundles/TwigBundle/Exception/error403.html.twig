@@ -1,0 +1,9 @@
+{% extends 'bse.html.twig' %}
+{% block body %}
+    <h1> Nie masz dostępów do tej zawartości.</h1>
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <a href="{{ url('user_dashboard') }}"><h2> Wróć do strony głównej.</h2></a>
+    {% else %}
+        <a href="{{ url('dashboard') }}"><h2> Wróć do strony głównej.</h2></a>
+    {% endif %}
+{% endblock %}

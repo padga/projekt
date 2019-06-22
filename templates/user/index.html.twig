@@ -7,17 +7,32 @@
 {% endblock %}
 
 {% block body %}
-    <h2>Dashboard</h2>
-    <h1>Tutaj będzie wykres ogólny</h1>
-    <canvas id="generalChart" width=30% height=7%></canvas>
-    <p>Twoje wydatki wyniosły {{ expense }}</p>
-    <p>Twoje przychody wyniosły {{ income }}</p>
+
     {% set result= income - expense %}
     <h1>Twoje saldo wynosi {{ result }}</h1>
+    <canvas id="generalChart" width=30% height=7%></canvas>
+    <div class="container">
+        <br>
+    <p>Twoje wydatki wyniosły {{ expense|default('0') }} zł  </p>       <a href="{{ url('transaction_expenses') }}">
+            <button class ="confirm">
 
+                {{ 'message.see_expenses'|trans }}
+            </button>
+        </a>
+
+    <p>Twoje przychody wyniosły {{ income|default('0') }} zł</p> <a href="{{ url('transaction_incomes') }}">
+            <button class ="confirm">
+
+                {{ 'message.see_incomes'|trans }}
+            </button>
+        </a>
+
+    </div>
 <script>
         var expense = {{ expense|json_encode|raw }};
         var income = {{ income|json_encode|raw }};
+        var texpense = {{ 'expense'|trans|json_encode|raw }};
+        var tincome = {{ 'income'|trans|json_encode|raw }};
 
 </script>
 

@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="page.title">
                 <source>page.title</source>
-                <target>Here goes my page title</target>
+                <target>My personal wallet</target>
             </trans-unit>
             <trans-unit id="title.login">
                 <source>title.login</source>
@@ -174,6 +174,115 @@
                 <source>title.type_delete</source>
                 <target>Delete type</target>
             </trans-unit>
+            <trans-unit id="income">
+                <source>income</source>
+                <target>Incomes</target>
+            </trans-unit>
+            <trans-unit id="expense">
+                <source>expense</source>
+                <target>Expenses</target>
+            </trans-unit>
+            <trans-unit id="message.add_type">
+                <source>message.add_type</source>
+                <target>Add new type</target>
+            </trans-unit>
+            <trans-unit id="title.type_edit">
+                <source>title.type_edit</source>
+                <target>Edit type</target>
+            </trans-unit>
+            <trans-unit id="label.type">
+                <source>label.type</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="title.transaction_index">
+                <source>title.transaction_index</source>
+                <target>My transactions</target>
+            </trans-unit>
+            <trans-unit id="title.transaction_edit">
+                <source>title.transaction_edit</source>
+                <target>Edit transaction</target>
+            </trans-unit>
+            <trans-unit id="title.transaction_delete">
+                <source>title.transaction_delete</source>
+                <target>Delete transaction</target>
+            </trans-unit>
+            <trans-unit id="message.add_transaction">
+                <source>message.add_transaction</source>
+                <target>Add transaction</target>
+            </trans-unit>
+            <trans-unit id="title.add_transaction">
+                <source>title.add_transaction</source>
+                <target>Add transaction</target>
+            </trans-unit>
+            <trans-unit id="message.see_incomes">
+                <source>message.see_incomes</source>
+                <target>See incomes</target>
+            </trans-unit>
+            <trans-unit id="message.see_expenses">
+                <source>message.see_expenses</source>
+                <target>See expenses</target>
+            </trans-unit>
+            <trans-unit id="message.manage_types">
+                <source>message.manage_types</source>
+                <target>Manage types</target>
+            </trans-unit>
+            <trans-unit id="message.manage_users">
+                <source>message.manage_users</source>
+                <target>Manage users</target>
+            </trans-unit>
+            <trans-unit id="title.password_change">
+                <source>title.password_change</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="message.change_email">
+                <source>message.change_email</source>
+                <target>Change email</target>
+            </trans-unit>
+            <trans-unit id="message.change_password">
+                <source>message.change_password</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="title.email_edit">
+                <source>title.email_edit</source>
+                <target>Edit email</target>
+            </trans-unit>
+            <trans-unit id="label.role">
+                <source>label.role</source>
+                <target>Role</target>
+            </trans-unit>
+            <trans-unit id="title.role_edit">
+                <source>title.role_edit</source>
+                <target>Edit role</target>
+            </trans-unit>
+            <trans-unit id="message.change_role">
+                <source>message.change_role</source>
+                <target>Change role</target>
+            </trans-unit>
+            <trans-unit id="message.transaction_created_successfully">
+                <source>message.transaction_created_successfully</source>
+                <target>Transaction added!</target>
+            </trans-unit>
+            <trans-unit id="message.updated_successfully">
+                <source>message.updated_successfully</source>
+                <target>Updated successfully</target>
+            </trans-unit>
+            <trans-unit id="message.deleted_successfully">
+                <source>message.deleted_successfully</source>
+                <target>Deleted successfully</target>
+            </trans-unit>
+            <trans-unit id="title.new_user">
+                <source>title.new_user</source>
+                <target>Add new user</target>
+            </trans-unit>
+            <trans-unit id="message.type_contains_transactions">
+                <source>message.type_contains_transactions</source>
+                <target>Type contains transactions!</target>
+            </trans-unit>
+            <trans-unit id="message.tag_contains_transactions">
+                <source>message.tag_contains_transactions</source>
+                <target>Tag contains transactions!</target>
+            </trans-unit>
+
 
 
 

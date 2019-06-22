@@ -8,10 +8,17 @@
     <div class="chart">
         <h1>{{ 'label.incomes'|trans }} </h1>
         <h3>Twoje przychody wyniosły: {{ summary }} zł</h3>
-        <canvas id="myChart" width=30% height=10%></canvas>
+        <canvas id="myChart" width=30% height=7%></canvas>
     </div>
     {% set categoryArray=[] %}
     {% set amountArray = [] %}
+
+    <a href="{{ url('transaction_add') }}">
+        <div class ="add-category-button">
+
+            {{ 'message.add_transaction'|trans }}
+        </div>
+    </a>
 
     <div class="navigation text-center">
         {{ knp_pagination_render(pagination) }}
@@ -54,11 +61,11 @@
                         {{ 'action.view'|trans }}
                     </a>
                 </td>
-                {#<td>#}
-                    {#<a href="{{ url('user_delete', {id: user.id}) }}" title="{{ 'action.delete'|trans }}">#}
-                        {#{{ 'action.delete'|trans }}#}
-                    {#</a>#}
-                {#</td>#}
+                <td>
+                    <a href="{{ url('transaction_delete', {id: transaction.id}) }}" title="{{ 'action.delete'|trans }}">
+                        {{ 'action.delete'|trans }}
+                    </a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

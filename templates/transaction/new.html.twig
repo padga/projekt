@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
 
-
 {% block title %}
-    {{ 'title.user_delete'|trans({'%id%': user.id|default('')}) }}
+    {{ 'title.add_transaction'|trans}}
 {% endblock %}
  {% block body %}
+     {% if pagination|length  %}
+     {#{% for tag in pagination %}#}
+    {#{{ tag.tagName }}#}
+     {#{% endfor %}#}
+
 {% include 'default/_form.html.twig' with {
     page_title: 'title.add_transaction',
     attr: {
@@ -13,4 +17,14 @@
     },
     back_to_list_path: 'dashboard',
 } %}
+         {% else %}
+         <h1>Nie masz jeszcze tagów!</h1>
+             <a class="space" href="{{ url('tag_new') }}">
+                 <div class ="add-category-button">
+
+                     {{ 'message.add_tag'|trans }}
+                 </div>
+             </a>
+{% endif %}
+
 {% endblock %}

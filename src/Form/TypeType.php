@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class type Type
+ * Class type Type.
  */
 class TypeType extends AbstractType
 {
@@ -33,10 +33,10 @@ class TypeType extends AbstractType
             'type_title',
             TextType::class,
             [
-                'label' => 'label.type_title',
+                'label' => 'label.type',
                 'required' => true,
                 'attr' => ['max_length' => 255,
-                    'message' => 'message.not_empty',
+                    'min_length' => '3',
                 ],
             ]
         );

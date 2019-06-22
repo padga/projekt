@@ -37,6 +37,10 @@
             <input type="submit" value="{{ 'action.login'|trans }}" class="btn btn-primary" />
         </div>
     </form>
-    <a href="{{ url('auth_register')}}" title="{{ 'action.register'|trans }}"> {{ 'action.register'|trans }}</a>
+        <p></p>
     </div>
+        <a href="{{ url('auth_register')}}" title="{{ 'action.register'|trans }}">
+            <div class ="confirm-delete">{{ 'action.register'|trans }}</div>
+        </a>
+
 {% endblock %}

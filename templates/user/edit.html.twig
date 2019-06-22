@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block body %}
+<div id="container">
+    <h3>{{ app.user.firstName }}, zmień swoje hasło</h3>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.user_edit',
         page_title_param: {'%id%': user.id},
@@ -15,4 +17,12 @@
         },
         back_to_list_path: 'dashboard',
     } %}
+</div>
+    <a href="{{ url('user_delete', {id: user.id}) }}" title="{{ 'action.delete'|trans }}">
+        <div class="add-category-button">
+        {{ 'title.user_delete'|trans }}
+        </div>
+    </a>
+
+
 {% endblock %}
