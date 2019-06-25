@@ -7,7 +7,7 @@
 
 {% block body %}
 <div id="container">
-    <h3>Czy na pewno chcesz usunąć swoje konto?</h3>
+    <h3>{{ 'message.sure_delete_user'|trans }}</h3>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.user_delete',
         page_title_param: {'%id%': user.id},

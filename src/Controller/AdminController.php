@@ -42,7 +42,7 @@ class AdminController extends AbstractController
      *     name="users_index",
      * )
      */
-    public function index_users(Request $request, UserRepository $repository, PaginatorInterface $paginator): Response
+    public function indexUsers(Request $request, UserRepository $repository, PaginatorInterface $paginator): Response
     {
         $pagination = $paginator->paginate(
             $repository->queryAll(),

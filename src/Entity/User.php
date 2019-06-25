@@ -292,6 +292,7 @@ class User implements UserInterface
     public function getSalt()
     {
         // TODO: Implement getSalt() method.
+        return;
     }
 
     /**
@@ -302,6 +303,7 @@ class User implements UserInterface
     public function getUsername()
     {
         // TODO: Implement getUsername() method.
+        return;
     }
 
     /**

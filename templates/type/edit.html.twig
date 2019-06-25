@@ -7,7 +7,7 @@
 
 {% block body %}
     <div id="container">
-        <h2>Edytuj typ</h2>
+        <h2> {{ 'title.type_edit'|trans }}</h2>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.type_edit',
         page_title_param: {'%id%': type.id},

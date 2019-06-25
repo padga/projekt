@@ -7,7 +7,7 @@
 
 {% block body %}
     <div id="container">
-        <h2>Czy chcesz usunąć ten tag?</h2>
+        <h2>{{ 'message.sure_delete_tag'|trans }}</h2>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.tag_delete',
         page_title_param: {'%id%': tag.id},

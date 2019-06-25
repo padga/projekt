@@ -5,9 +5,6 @@
 {% endblock %}
  {% block body %}
      {% if pagination|length  %}
-     {#{% for tag in pagination %}#}
-    {#{{ tag.tagName }}#}
-     {#{% endfor %}#}
 
 {% include 'default/_form.html.twig' with {
     page_title: 'title.add_transaction',
@@ -18,7 +15,7 @@
     back_to_list_path: 'dashboard',
 } %}
          {% else %}
-         <h1>Nie masz jeszcze tagów!</h1>
+         <h1>{{ 'message.no_tags'|trans }}</h1>
              <a class="space" href="{{ url('tag_new') }}">
                  <div class ="add-category-button">
 

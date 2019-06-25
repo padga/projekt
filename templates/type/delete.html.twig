@@ -7,7 +7,7 @@
 
 {% block body %}
     <div id="container">
-        <h2>Czy chcesz usunąć typ?</h2>
+        <h2>{{ 'message.sure_delete_type'|trans }}</h2>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.type_delete',
         page_title_param: {'%id%': type.id},

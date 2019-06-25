@@ -6,7 +6,7 @@
 
 {% block body %}
     <div id="container">
-        <h3>Czy chcesz usunąć tę transakcję?</h3>
+        <h3>{{ 'message.sure_delete_transaction'|trans }}</h3>
     {% include 'default/_form.html.twig' with {
         page_title: 'title.transaction_delete',
         page_title_param: {'%id%': transaction.id},

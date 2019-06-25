@@ -7,7 +7,7 @@
 {% block body %}
     <div class="chart">
         <h1>{{ 'label.incomes'|trans }} </h1>
-        <h3>Twoje przychody wyniosły: {{ summary }} zł</h3>
+        <h3>{{ 'message.my_incomes' }}: {{ summary }} zł</h3>
         <canvas id="myChart" width=30% height=7%></canvas>
     </div>
     {% set categoryArray=[] %}

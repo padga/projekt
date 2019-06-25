@@ -9,15 +9,15 @@
         <div class="top-bar-right">
             <ul class="menu simple vertical medium-horizontal">
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') and is_granted('ROLE_ADMIN') %}
-                    <li><a href="{{ url("admin_panel")}}">Panel admina</a></li>
+                    <li><a href="{{ url("admin_panel")}}">{{ 'message.admin_panel'|trans }}</a></li>
                 {% endif %}
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li><a href="{{ url("user_dashboard")}}">{{ app.user.firstName }}</a></li>
-                <li><a href="{{ url("user_edit", {id:app.user.id})}}">Moje konto</a></li>
+                <li><a href="{{ url("user_edit", {id:app.user.id})}}"> {{ 'message.my_account'|trans }}</a></li>
 
-                <li><a href="{{ url("tag_index")}}">Tagi</a></li>
-                <li><a href="{{ url("transaction_index")}}">Transakcje</a></li>
-                    <li><a href="{{ url('security_logout') }}">Wyloguj się</a></li>
+                <li><a href="{{ url("tag_index")}}"> {{ 'message.tags'|trans }}</a></li>
+                <li><a href="{{ url("transaction_index")}}">{{ 'message.transactions'|trans }}</a></li>
+                    <li><a href="{{ url('security_logout') }}">{{ 'message.logout'|trans }}</a></li>
                 {% endif %}
             </ul>
         </div>

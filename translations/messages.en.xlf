@@ -282,9 +282,82 @@
                 <source>message.tag_contains_transactions</source>
                 <target>Tag contains transactions!</target>
             </trans-unit>
-
-
-
+            <trans-unit id="message.admin_actions">
+                <source>message.admin_actions</source>
+                <target>What do you want to do?</target>
+            </trans-unit>
+            <trans-unit id="message.error_occured">
+                <source>message.error_occured</source>
+                <target>An error occured.</target>
+            </trans-unit>
+            <trans-unit id="message.to_homepage">
+                <source>message.to_homepage</source>
+                <target>Back to homepage.</target>
+            </trans-unit>
+            <trans-unit id="message.not_found">
+                <source>message.not_found</source>
+                <target>Page not found.</target>
+            </trans-unit>
+            <trans-unit id="message.not_allowed">
+                <source>message.not_allowed</source>
+                <target>You are not allowed to see this section.</target>
+            </trans-unit>
+            <trans-unit id="message.logout">
+                <source>message.logout</source>
+                <target>Logout</target>
+            </trans-unit>
+            <trans-unit id="message.transactions">
+                <source>message.transactions</source>
+                <target>Transactions</target>
+            </trans-unit>
+            <trans-unit id="message.tags">
+                <source>message.tags</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="message.my_account">
+                <source>message.my_account</source>
+                <target>My account</target>
+            </trans-unit>
+            <trans-unit id="message.admin_panel">
+                <source>message.admin_panel</source>
+                <target>Admin panel</target>
+            </trans-unit>
+            <trans-unit id="message.sure_delete_tag">
+                <source>message.sure_delete_tag</source>
+                <target>Do you really want to delete this tag?</target>
+            </trans-unit>
+            <trans-unit id="message.delete_disabled">
+                <source>message.delete_disabled</source>
+                <target>Deleting disabled.</target>
+            </trans-unit>
+            <trans-unit id="message.sure_delete_transaction">
+                <source>message.sure_delete_transaction</source>
+                <target>Do you really want to delete this transaction?</target>
+            </trans-unit>
+            <trans-unit id="message.my_expenses">
+                <source>message.my_expenses</source>
+                <target>My expenses are</target>
+            </trans-unit>
+            <trans-unit id="message.my_incomes">
+                <source>message.my_incomes</source>
+                <target>My incomes are</target>
+            </trans-unit>
+            <trans-unit id="message.no_tags">
+                <source>message.no_tags</source>
+                <target>You don't have any tag yet!</target>
+            </trans-unit>
+            <trans-unit id="message.sure_delete_type">
+                <source>message.sure_delete_type</source>
+                <target>Do you really want to delete this type?</target>
+            </trans-unit>
+            <trans-unit id="message.sure_delete_user">
+                <source>message.sure_delete_user</source>
+                <target>Do you really want to delete account?</target>
+            </trans-unit>
+            <trans-unit id="label.balance">
+                <source>label.balance</source>
+                <target>Your balance is</target>
+            </trans-unit>
 
         </body>
     </file>

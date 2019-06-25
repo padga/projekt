@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block body %}
+    <h2>{{ 'title.email_edit'|trans }}</h2>
+
     {% include 'default/_form.html.twig' with {
         page_title: 'title.email_edit',
         page_title_param: {'%id%': user.id},

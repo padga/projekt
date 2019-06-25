@@ -9,18 +9,18 @@
 {% block body %}
 
     {% set result= income - expense %}
-    <h1>Twoje saldo wynosi {{ result }}</h1>
+    <h1>{{ 'label.balance' }} {{ result }}</h1>
     <canvas id="generalChart" width=30% height=7%></canvas>
     <div class="container">
         <br>
-    <p>Twoje wydatki wyniosły {{ expense|default('0') }} zł  </p>       <a href="{{ url('transaction_expenses') }}">
+    <p>{{ 'message.my_expenses'|trans }}: {{ expense|default('0') }} zł  </p>       <a href="{{ url('transaction_expenses') }}">
             <button class ="confirm">
 
                 {{ 'message.see_expenses'|trans }}
             </button>
         </a>
 
-    <p>Twoje przychody wyniosły {{ income|default('0') }} zł</p> <a href="{{ url('transaction_incomes') }}">
+    <p>{{ 'message.my_incomes'|trans }}: {{ income|default('0') }} zł</p> <a href="{{ url('transaction_incomes') }}">
             <button class ="confirm">
 
                 {{ 'message.see_incomes'|trans }}
